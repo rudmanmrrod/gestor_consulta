@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>{% block title %}Gestor de Consultas Públicas{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static "materialize/css/materialize.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "materialize/material_icon/icon.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+        
+        <script src="{% static "jquery/jquery-3.1.0.min.js" %}"></script>
+        <script src="{% static "materialize/js/materialize.min.js" %}"></script>
+        <script src="{% static "js/funciones.js" %}"></script>
+        {% block headScript %}{%endblock%}
+    </head>
+    <body class="grey lighten-4">
+        {% include 'base.nav.bar.html' %}
+        <main>
+        {% block superContent%}
+            <div class="container">
+                <div class="card-panel">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        </main>
+        {% block modals %}{% endblock %}
+        {% include 'base.footer.html' %}
+    </body>
+    {% block extraJs %}{%endblock%}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+    {% include 'base.alert.messages.html' %}
+    {% include 'base.vars.javascript.html' %}
+</html>

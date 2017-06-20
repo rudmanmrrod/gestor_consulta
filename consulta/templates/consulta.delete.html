@@ -1,0 +1,12 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Eliminar Consulta{% endblock %}
+{% block contenido %}
+    <h1>Borrar consulta <b>{{object.nombre_consulta}}</b></h1><hr>
+    <form method="post">
+        {% csrf_token %}
+        <p>Si en realidad deseas borrar este registro da click en:</p>
+        <button type="submit" class="btn btn-danger"/>Borrar </button>
+    </form><br>
+    <a type="button" class="btn btn-info" href="{% url 'consulta_detail' consulta.id %}"> Regresar </a>
+{% endblock %}

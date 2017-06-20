@@ -1,0 +1,15 @@
+{% extends 'base.template.html' %}
+{% load staticfiles %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+    <div class="center">
+        <h1>Bienvenido al sistema de consulta pública</h1><hr>
+        <p>Este sistema de permite realizar de manera flexible, sistemática y sencilla,
+        todo tipo de consultas, con módulos para la creación de consultas, visualización de consultas,
+        participación en consultas y análisis de información.</p>
+        <h3>¿Deseas participar en algun consulta?</h3>
+        <p>Éste es el sitio indicado para iniciar.</p><br>
+        <a type="button" href="{% url 'register' %}" class="btn waves-effect deep-orange lighten-1">Registrarse</a><br><br>
+        <a type="button" href="{% url 'login' %}" class="btn waves-effect deep-orange lighten-1">Iniciar Sesión</a>
+    </div>
+{% endblock %}

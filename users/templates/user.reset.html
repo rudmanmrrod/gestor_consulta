@@ -1,0 +1,25 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Recuperar Contraseña{% endblock %}
+{% block contenido %}
+    <div class="center">
+        <h1>Recuperar Contraseña</h1><hr>
+        <form action="{% url 'reset' %}" method="post">
+            {% csrf_token %}
+            <div class="col m12 s12">
+                <div class="input-field {% if form.email.errors %}invalid{% endif %}">
+                    {{ form.email }}
+                    <label for="{{ form.email.auto_id }}">
+                        {{ form.email.label }}
+                    </label>
+                    {% include 'base.forms.errors.html' with form_errors=form.email.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    <div class="col s1"><i class="ion ion-ios-medical item-requerido"></i></div>
+                </div>
+            </div><br><br><br>
+            <div class="col m12 s12">
+                <button type="submit" class="btn waves-effect deep-orange lighten-1">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

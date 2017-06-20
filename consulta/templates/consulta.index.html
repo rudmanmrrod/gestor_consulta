@@ -1,0 +1,16 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Consulta{% endblock %}
+{% block contenido %}
+    <div class="center">
+        <h1>Consulta</h1><hr>
+        <div class="row" style="padding: 10px 0px 10px 1px;" >
+            <div class="col m6">
+                <a type="button" class="btn btn-waves deep-orange lighten-1" href="{% url 'consulta_create' %}">Crear</a>
+            </div>
+            <div class="col m6">
+                <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_list' %}">Ver</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

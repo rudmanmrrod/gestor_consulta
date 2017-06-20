@@ -1,0 +1,162 @@
+{% extends 'base.template.html' %}
+{% load staticfiles %}
+{% block title %}Registrarse{% endblock %}
+{% block content %}
+  <div class="center">
+    <h1>Registro</h1><hr>
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+      <div class="col m12 s12">
+        <div class="input-field {% if form.username.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.username }}
+            <label for="{{ form.username.auto_id }}">
+              {{ form.username.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.username.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+      
+       <div class="col m12 s12">
+        <div class="input-field {% if form.password.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.password }}
+            <label for="{{ form.password.auto_id }}">
+              {{ form.password.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.password.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+      
+      <div class="col m12 s12">
+        <div class="input-field {% if form.password_repeat.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.password_repeat }}
+            <label for="{{ form.password_repeat.auto_id }}">
+              {{ form.password_repeat.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.password_repeat.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+          
+      <div class="col m12 s12">
+        <div class="input-field {% if form.nombre.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.nombre }}
+            <label for="{{ form.nombre.auto_id }}">
+              {{ form.nombre.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.nombre.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+      
+      <div class="col m12 s12">
+        <div class="input-field {% if form.apellido.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.apellido }}
+            <label for="{{ form.apellido.auto_id }}">
+              {{ form.apellido.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.apellido.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+      
+      <div class="col m12 s12">
+        <div class="input-field {% if form.cedula.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+          <div class="row">
+            {{ form.cedula }}
+            <label for="{{ form.cedula.auto_id }}_1">
+              {{ form.cedula.label }}
+            </label>
+          </div>
+            {% include 'base.forms.errors.html' with form_errors=form.cedula.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+          
+      <div class="col m12 s12">
+        <div class="input-field {% if form.email.errors %}invalid{% endif %}">
+          <div class="col m4 s4">
+            {{ form.email }}
+            <label for="{{ form.email.auto_id }}">
+              {{ form.email.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.email.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+          
+        </div>
+      </div><br><br><br>
+      
+      <div class="row">
+        <div class="col m4 s4">
+          <div class="input-field {% if form.estado.errors %}invalid{% endif %}">
+            {{ form.estado }}
+            <label for="{{ form.estado.auto_id }}">
+              {{ form.estado.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.estado.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+        </div>
+        
+        <div class="col m4 s4">
+          <div class="input-field {% if form.municipio.errors %}invalid{% endif %}">
+            {{ form.municipio }}
+            <label for="{{ form.municipio.auto_id }}">
+              {{ form.municipio.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.municipio.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+        </div>
+        
+        <div class="col m4 s4">
+          <div class="input-field {% if form.parroquia.errors %}invalid{% endif %}">
+            {{ form.parroquia }}
+            <label for="{{ form.parroquia.auto_id }}">
+              {{ form.parroquia.label }}
+            </label>
+            {% include 'base.forms.errors.html' with form_errors=form.parroquia.errors col_title_error='col s2' col_msg_error='col s10' %}
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <div class="row">
+          <div class="col s4 offset-s5">
+              <div class="input-field {% if form.captcha.errors %}invalid{% endif %}">
+                  <label>{{form.captcha.label}}</label>
+                  <div class="col s7">
+                      {{form.captcha}}
+                  </div>
+                  <a class="col s2" onclick="refresh_captcha(this);" style="cursor: pointer">
+                      <i class="small material-icons">cached</i>
+                  </a>
+                  {% include 'base.forms.errors.html' with form_errors=form.captcha.errors col_title_error='col s2' col_msg_error='col s10' %}
+              </div>
+          </div>
+      </div>
+
+      <br />
+      <br />
+
+      <div class="col m12 s12">
+         <button type="submit" class="btn waves-effect deep-orange lighten-1">Registrarse</button>
+      </div>
+    </form>
+  </div>
+  <br />
+{% endblock %}

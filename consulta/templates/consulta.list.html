@@ -1,0 +1,28 @@
+{% extends 'base.template.html' %}
+{% load staticfiles %}
+{% block title %}Consultas{% endblock %}
+{% block content %}
+    <h1 class="center">Consultas</h1><hr>
+    
+    {% for consulta in object_list %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title"><b>Nombre de la consulta: </b>{{ consulta.nombre_consulta }}</span>
+                <ul>
+                    <li><b>Activa: </b>{% if consulta.activa %} Si {% else %} No {% endif %}</li>
+                    <li><b>Token: </b>{{ consulta.token }}</li>
+                </ul>
+            </div>
+            <div class="card-action">
+                <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_detail' consulta.id %}">
+                    <i class="material-icons left">search</i> Ver
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <h3>No existen consultas.</h3>
+    {% endfor %}
+    <div style="padding-bottom: 50px;">
+        <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_index' %}">Regresar</a>
+    </div>
+{% endblock %}

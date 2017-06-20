@@ -1,0 +1,13 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Error{% endblock %}
+{% block contenido %}
+    <div class="error-content">
+      <h3><i class="fa fa-warning text-blue"></i> Oops! No tiene permiso de acceso a esta pagina.</h3>
+
+      <p>
+        No puedes acceder a la pagina que buscas.
+        Puedes <b><a href="{% url 'inicio' %}">retornar a inicio</a></b> o solicitar al administrador permisos de acceso.
+      </p>
+    </div>
+{% endblock %}

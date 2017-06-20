@@ -1,0 +1,53 @@
+{% extends 'base.template.html' %}
+{% load staticfiles %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="content center">
+	<form id="form" action="{% url 'login' %}" method="post">
+		{% csrf_token %}
+		<div class="input-field {% if form.usuario.errors %}invalid{% endif %}">
+			<i class="tiny material-icons prefix">account_circle</i>
+			{{ form.usuario }}
+			<label for="icon_prefix {{ form.usuario.auto_id }}">Usuario</label>
+			{% include 'base.forms.errors.html' with form_errors=form.usuario.errors col_title_error='col s2' col_msg_error='col s10' %}
+		</div>
+		
+		<div class="input-field {% if form.usuario.errors %}invalid{% endif %}">
+			<i class="tiny material-icons prefix">lock</i>
+			{{ form.contrasena }}
+			<label for="icon_prefix {{ form.contrasena.auto_id }}">Contraseña</label>
+			{% include 'base.forms.errors.html' with form_errors=form.usuario.errors col_title_error='col s2' col_msg_error='col s10' %}
+		</div>
+		
+		<div class="row">
+			<a href="{% url 'reset' %}" style="cursor: pointer">¿Olvido su contraseña?</a> <span class="separator_link">|</span>
+			<a href="{% url 'register' %}" style="cursor: pointer">Registrarse</a>
+		</div>
+		
+		<div class="row">
+			<p class="center">
+				{{form.remember_me}}
+				<label for="id_remember_me">{{form.remember_me.label}}</label>
+			</p>
+		</div>
+		<div class="row">
+			<div class="col s4 offset-s5">
+				<div class="input-field {% if form.captcha.errors %}invalid{% endif %}">
+					<label>{{form.captcha.label}}</label>
+					<div class="col s7">
+						{{form.captcha}}
+					</div>
+					<a class="col s2" onclick="refresh_captcha(this);" style="cursor: pointer">
+						<i class="small material-icons">cached</i>
+					</a>
+					{% include 'base.forms.errors.html' with form_errors=form.captcha.errors col_title_error='col s2' col_msg_error='col s10' %}
+				</div>
+			</div>
+		</div>
+		<div>
+			<button type="submit" class="btn waves-effect deep-orange lighten-1">Entrar</button>
+		</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

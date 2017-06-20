@@ -1,0 +1,6 @@
+*.pyc
+*.py~
+*.squlite3
+migrations
+migrations/*
+static/procesamiento_files/*

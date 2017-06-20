@@ -1,0 +1,33 @@
+[
+    {
+        "fields": {
+            "tipo": "Selección Simple"
+        },
+        "model": "consulta.TipoPregunta"
+    },
+    {
+        "fields": {
+            "tipo": "Selección Múltiple"
+        },
+        "model": "consulta.TipoPregunta"
+    },
+    {
+        "fields": {
+            "tipo": "Si/No"
+        },
+        "model": "consulta.TipoPregunta"
+    },
+    {
+        "fields": {
+            "tipo": "Si/No (Justificar No)"
+        },
+        "model": "consulta.TipoPregunta"
+    },
+    {
+        "fields": {
+            "tipo": "Abierta"
+        },
+        "model": "consulta.TipoPregunta"
+    }
+    
+]

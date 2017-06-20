@@ -1,0 +1,20 @@
+<nav class="deep-orange lighten-1">
+  <div class="nav-wrapper">
+    <a class="brand-logo" href="{% url 'inicio' %}">Consulta Pública</a>
+    {% if request.user.is_authenticated %}
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#!" class="dropdown-button" data-activates="dropdown1">Bienvenido <b>{{request.user.username}}</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a class="deep-orange-text lighten-1" href="{% url 'update' request.user.id %}">Perfil</a></li>
+        <li><a class="deep-orange-text lighten-1" href="{% url 'consulta_index'%}">Consultas</a></li>
+        <li><a class="deep-orange-text lighten-1" href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </ul>
+    {% else %}
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Bienvenido <b>Anónimo</b></a></li>
+      </ul>
+    {% endif %}
+  </div>
+</nav>
+        

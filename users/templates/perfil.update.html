@@ -1,0 +1,61 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Perfil{% endblock %}
+{% block contenido %}
+    <form action="" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+        {% csrf_token %}
+        <div class="center">
+            <h1>Actualizar Perfil</h1><hr>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="input-field {% if form.cedula.errors %}invalid{% endif %}">
+                    <div class="col m4 s4">
+                        <div class="row">
+                            {{ form.cedula }}
+                            <label for="{{ form.cedula.auto_id }}">
+                                {{ form.cedula.label }}
+                            </label>
+                        </div>
+                        {% include 'base.forms.errors.html' with form_errors=form.cedula.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    </div>
+                </div>
+            </div><br><br><br>
+            
+            <div class="row">
+                <div class="col m4 s4">
+                    <div class="input-field {% if form.estado.errors %}invalid{% endif %}">
+                        {{ form.estado }}
+                        <label for="{{ form.estado.auto_id }}">
+                            {{ form.estado.label }}
+                        </label>
+                        {% include 'base.forms.errors.html' with form_errors=form.estado.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    </div>
+                </div>
+                
+                <div class="col m4 s4">
+                    <div class="input-field {% if form.municipio.errors %}invalid{% endif %}">
+                        {{ form.municipio }}
+                        <label for="{{ form.municipio.auto_id }}">
+                                {{ form.municipio.label }}
+                        </label>
+                        {% include 'base.forms.errors.html' with form_errors=form.municipio.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    </div>
+                </div>
+                
+                <div class="col m4 s4">
+                    <div class="input-field {% if form.parroquia.errors %}invalid{% endif %}">
+                        {{ form.parroquia }}
+                        <label for="{{ form.parroquia.auto_id }}">
+                            {{ form.parroquia.label }}
+                        </label>
+                        {% include 'base.forms.errors.html' with form_errors=form.parroquia.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br>
+             <div class="col-md-12 col-sm-12 col-xs-12">
+                 <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_index' %}">Regresar</a>
+                <button type="submit" class="btn waves-effect deep-orange lighten-1">Actualizar</button>
+             </div>
+        </div>
+    </form>
+{% endblock %}

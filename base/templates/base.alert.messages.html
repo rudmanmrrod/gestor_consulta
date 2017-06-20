@@ -1,0 +1,23 @@
+{% for message in messages %}
+    {% if message %}
+        <!-- Modal Structure -->
+        <div id="modal_msg" class="modal">
+          <div class="modal-content">
+            <h4>Aviso</h4>
+            <p>{{ message }}</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Aceptar</a>
+          </div>
+        </div>
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $('#modal_msg').modal();
+                $('#modal_msg').modal('open');
+              
+            });
+       
+        </script>
+    {% endif %}
+{% endfor %}

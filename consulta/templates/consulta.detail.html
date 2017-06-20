@@ -1,0 +1,27 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Ver Consulta{% endblock %}
+{% block contenido %}
+    <h1>Consulta "{{object.nombre_consulta}}"</h1>
+    <div class="card">
+        <div class="card-content">
+            <ul>
+                <li><b>Token: </b>{{ object.token }}</li>
+                <li><b>Activa: </b>{% if object.activa %} Si {% else %} No {% endif %}</li>
+            </ul>
+            <p>Preguntas</p><hr>
+            {% for pregunta in preguntas %}
+                <ul>
+                    <li><b>Pregunta: </b>{{ pregunta.texto_pregunta }}</li>
+                    <li>
+                        <b>Tipo de Pregunta: </b>{{ pregunta.tipo_pregunta.tipo }}
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="panel-footer"></div>
+    </div>
+    <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_list' %}">Regresar</a>
+    <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_update' consulta.id  %}">Actualizar</a>
+    <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_delete' consulta.id %}"> Borrar</a>
+{% endblock %}

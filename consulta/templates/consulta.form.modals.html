@@ -1,0 +1,136 @@
+{# Formulario para las preguntas base #}
+<script type="text/html" id="preguntas_base">
+    <div class="row">
+        <div class="col m5 s5 l5">
+            <label for="texto_pregunta_modal">
+                Texto de la Pregunta
+            </label>
+            <input class="form-control input-md" id="id_texto_pregunta" name="texto_pregunta" type="text" required="">
+        </div>
+        <div class="col m5 s5 l5">
+            <label for="tipo_pregunta_modal">
+                Tipo de pregunta
+            </label>
+            <select id="id_tipo_pregunta" name="tipo_pregunta" required="">
+                <option value="" selected="selected">Seleccione...</option>
+                <option value="1">Selección Simple</option>
+                <option value="2">Selección Múltiple</option>
+                <option value="3">Si/No</option>
+                <option value="4">Si/No (Justificar No)</option>
+                <option value="5">Abierta</option>
+            </select>
+
+        </div>
+        <span class="col m2 red-text lighten-1" style="margin-top: 3%">
+            <a class="red-text lighten-1" href="#!" onclick="eliminar_preguntas(this)">
+                <i class="tiny material-icons">remove_circle_outline</i>
+                Eliminar
+            </a>
+        </span>
+    </div>
+</script>
+
+{# Formulario para las preguntas #}
+<script type="text/html" id="preguntas">
+    <div class="row">
+        <div class="col m5 s5 l5">
+            <label for="texto_pregunta_modal">
+                Texto de la Pregunta
+            </label>
+            <input class="form-control input-md" id="id_texto_pregunta_modal" name="texto_pregunta_modal" type="text" required="">
+        </div>
+        <div class="col m5 s5 l5">
+            <label for="tipo_pregunta_modal">
+                Tipo de pregunta
+            </label>
+            <select id="id_tipo_pregunta_modal" name="tipo_pregunta_modal" required="">
+                <option value="" selected="selected">Seleccione...</option>
+                <option value="1">Selección Simple</option>
+                <option value="2">Selección Múltiple</option>
+                <option value="3">Si/No</option>
+                <option value="4">Si/No (Justificar No)</option>
+                <option value="5">Abierta</option>
+            </select>
+
+        </div>
+        <span class="col m2 red-text lighten-1" style="margin-top: 3%">
+            <a class="red-text lighten-1" href="#!" onclick="eliminar_preguntas(this)">
+                <i class="tiny material-icons">remove_circle_outline</i>
+                Eliminar
+            </a>
+        </span>
+    </div>
+</script>
+
+{# Formulario base para opciones #}
+<script type="text/html" id="agregar_opciones_base">
+        <a class="deep-orange-text lighten-1" href="#" onclick="add_option(this)">
+            <i class="tiny material-icons">add_circle_outline</i>
+            Agregar opción
+        </a>
+    <div id="for_options" class="row">
+        <div id="opciones">
+            <div>
+                <label> Opciones </label>
+                <input id="id_texto_opcion" name="texto_opcion" type="text" required="">
+            </div>
+            <a class="red-text lighten-1" href="#!" onclick="remove_option(this)">
+                <i class="tiny material-icons">remove_circle_outline</i>
+                Eliminar
+            </a>
+        </div>
+    </div>
+</script>
+
+{# Formulario base para opciones #}
+<script type="text/html" id="agregar_opciones">
+    <div id="opciones">
+        <div>
+            <label> Opciones </label>
+            <input id="id_texto_opcion" name="texto_opcion" type="text" required="">
+        </div>
+        <a class="red-text lighten-1" href="#!" onclick="remove_option(this)">
+            <i class="tiny material-icons">remove_circle_outline</i>
+            Eliminar
+        </a>
+    </div>
+</script>
+
+{# Formulario general #}
+<script type="text/html" id="formulario">
+    <form action="" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off" id="formulario_modal">
+        {% csrf_token %}
+    </form>
+</script>
+
+
+{# Modal básico #}
+<div id="modal-basic" class="modal">
+  <div class="modal-content">
+    <h4 class="modal-title">Aviso</h4>
+    <div class="modal-content"></div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
+
+{# Modal fijado abajo #}
+<div id="modal-fixed" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4 class="modal-title">Aviso</h4>
+    <div class="modal-content"></div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
+
+{# Modal para confirmaciones #}
+<!-- Modal Structure -->
+<div id="modal-confirm" class="modal">
+  <div class="modal-content">
+    <h4 class="modal-title">Aviso</h4>
+    <div class="modal-content"></div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>

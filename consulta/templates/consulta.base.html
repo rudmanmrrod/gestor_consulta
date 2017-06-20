@@ -1,0 +1,9 @@
+{% extends 'base.template.html' %}
+{% block content %}
+    <div id="content">
+        {% block contenido %}{% endblock %}
+    </div>
+{% endblock %}
+{% block modals %}
+    {% include 'consulta.form.modals.html' %}
+{% endblock %}

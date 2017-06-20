@@ -1,0 +1,49 @@
+{% extends 'consulta.base.html' %}
+{% load staticfiles %}
+{% block title %}Actualizar Consulta{% endblock %}
+{% block contenido %}
+    <form action="" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+        {% csrf_token %}
+        <div class="center">
+            <h1>Actualizar Consulta</h1><hr>
+            {% for field in form %}
+                <div class="input-field {% if field.errors %}invalid{% endif %}">
+                    {{ field }}
+                    <label for="{{ field.auto_id }}">
+                        {{ field.label }}
+                    </label>
+                    {% include 'base.forms.errors.html' with form_errors=field.errors col_title_error='col s2' col_msg_error='col s10' %}
+                </div>
+             {% endfor %}
+             <div class="row">
+                {% if preguntas %}
+                   <div class="col m6 s6">
+                       <h5>
+                           <a class="deep-orange-text lighten-1" href="#" onclick="ver_preguntas({{object.id}})">
+                                <i class="material-icons">visibility</i>
+                                Ver Preguntas
+                           </a>
+                       </h5>
+                   </div>
+                {% endif %}
+                   <div class="col m6 s6">
+                       <h5>
+                           <a class="deep-orange-text lighten-1" href="#" onclick="add_preguntas({{object.id}})">
+                                <i class="material-icons">add_circle_outline</i>
+                                Añadir Preguntas
+                           </a>
+                       </h5>
+                   </div>
+            </div>
+             <div>
+                 <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_detail' object.id %}">Regresar</a>
+                <button type="submit" class="btn waves-effect deep-orange lighten-1">Actualizar</button>
+             </div>
+        </div>
+    </form>
+    {% if opciones %}
+        <script>
+            var opciones = {{ opciones | safe }};
+        </script>
+    {% endif %}
+{% endblock %}
