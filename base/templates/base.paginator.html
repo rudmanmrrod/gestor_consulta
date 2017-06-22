@@ -1,0 +1,23 @@
+<ul class="pagination center">
+    {% if paginator.has_previous %}
+        <li>
+            <span>
+                <a href="?page={{ paginator.previous_page_number }}" class="waves-effect">
+                    <i class="material-icons tiny" id="tiny">chevron_left</i> Anterior
+                </a>
+            </span>
+        </li>
+    {% endif %}
+        <li>
+            <span>Página {{ paginator.number }} de {{ paginator.paginator.num_pages }}.</span>
+        </li>
+    {% if paginator.has_next %}
+        <li>
+            <span>
+                <a href="?page={{ paginator.next_page_number }}" class="waves-effect">
+                    Siguiente <i class="material-icons" id="tiny">chevron_right</i>
+                </a>
+            </span>
+        </li>
+    {% endif %}
+</ul>

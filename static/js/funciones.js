@@ -162,6 +162,7 @@ function agregar_opcion(id) {
 
 /**
  * Función para enviar el formulario de las opciones
+ * @param objecto Recibe el objecto
 **/
 function submitOption(objecto) {
     var input = $(objecto).parent().parent().find('#opciones #id_texto_opcion');
@@ -268,7 +269,7 @@ function update_option(id) {
  * Función para eliminar las opciones de un pregunta
  * @param id Recibe el id de la pregunta
 **/
-function del_option(element,id) {
+function del_option(id) {
     $('#modal-confirm').modal();
     $('#modal-confirm').find('.modal-title').text("Alerta");
     $('#modal-confirm').find('.modal-content').html("¿Desea borrar la opción seleccionada?");
@@ -282,7 +283,7 @@ function del_option(element,id) {
  * Función para eliminar una pregunta
  * @param id Recibe el id de la pregunta
 **/
-function del_pregunta(element,id) {
+function del_pregunta(id) {
     $('#modal-confirm').modal();
     $('#modal-confirm').find('.modal-title').text("Alerta");
     $('#modal-confirm').find('.modal-content').html("¿Desea borrar la pregunta seleccionada?");
@@ -369,6 +370,10 @@ function create_question(id) {
     });
 }
 
+/**
+ * Función para eliminar un pregunta
+ * @param id Recibe el id de la pregunta
+**/
 function delete_question(id) {
     var token = $('input').val();
     var input = '';
@@ -397,6 +402,10 @@ function delete_question(id) {
     }); 
 }
 
+/**
+ * Función para eliminar un opcion
+ * @param id Recibe el id de la opcion
+**/
 function delete_option(id) {
     var token = $('input').val();
     var input = '';

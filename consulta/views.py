@@ -156,7 +156,7 @@ class ConsultaList(LoginRequiredMixin,ListView):
         @param kwargs <b>{object}</b> Objeto que contiene los datos de contexto
         @return Retorna los datos de contexto
         """
-        kwargs['object_list'] = Consulta.objects.filter(user_id=self.request.user.id).all()
+        kwargs['object_list'] = Consulta.objects.filter(user_id=self.request.user.id).order_by('nombre_consulta').all()
         ## Implementación del paginador
         paginator = Paginator(kwargs['object_list'], self.paginate_by)
         page = self.request.GET.get('page')
