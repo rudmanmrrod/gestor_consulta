@@ -98,9 +98,9 @@ function ver_preguntas(id) {
                 var html = '<form action="" role="form" method="post" id="question_form">';
                 html += '<input type="hidden" name="csrfmiddlewaretoken" value="'+token+'">';
                 $.each(preguntas,function(key,value){
-                    html += "<h4>Pregunta #"+parseInt(key+1)+"</h4>";
+                    html += "<div><h4>Pregunta #"+parseInt(key+1)+"</h4>";
                     html+= $('#preguntas').html();
-                    html += "<hr>";
+                    html += "<hr></div>";
                 });
                 html += "</form>";
                 $('#modal-basic').modal();
@@ -127,7 +127,7 @@ function ver_preguntas(id) {
                         $(padre).append(html);
                     }
                 });
-                $.each($('.modal-content h4 a'),function(key,value){
+                $.each($('.modal-content span a'),function(key,value){
                     $(value).attr('onclick','del_pregunta(this,'+preguntas[key]['id']+')');
                 });
                 $('#modal-basic').modal("open");
@@ -164,24 +164,36 @@ function agregar_opcion(id) {
  * Función para enviar el formulario de las opciones
 **/
 function submitOption(objecto) {
-    var form = $(objecto).parent().parent().find('form');
-    $.ajax({
-        data: $(form).serialize(), 
-        type: 'POST',
-        url: URL_CREAR_OPCIONES+$(form).attr('action'),
-        success: function(response) {
-            if (response.code) {
-                Materialize.toast('Se crearon las opciones con éxito', 4000);
-            }
-            else{
-                var errors = '';
-                $.each(response.errors,function(key,value){
-                    errors += key+" "+value+"<br>";
-                });
-                Materialize.toast(errors, 4000);
-            }
+    var input = $(objecto).parent().parent().find('#opciones #id_texto_opcion');
+    var vacio = false;
+    $.each(input,function(key,value){
+        if ($(value).val().trim()=='') {
+            vacio = true;
         }
     });
+    if (!vacio) {
+        var form = $(objecto).parent().parent().find('form');
+        $.ajax({
+            data: $(form).serialize(), 
+            type: 'POST',
+            url: URL_CREAR_OPCIONES+$(form).attr('action'),
+            success: function(response) {
+                if (response.code) {
+                    Materialize.toast('Se crearon las opciones con éxito', 4000);
+                }
+                else{
+                    var errors = '';
+                    $.each(response.errors,function(key,value){
+                        errors += key+" "+value+"<br>";
+                    });
+                    Materialize.toast(errors, 4000);
+                }
+            }
+        });
+    }
+    else{
+        Materialize.toast('Debe llenar todas las opciones', 4000);
+    }
 }
 
 /**
@@ -199,9 +211,9 @@ function see_option(id) {
             var html = '<form action="" role="form" method="post" id="option_form">';
             html += '<input type="hidden" name="csrfmiddlewaretoken" value="'+token+'">';
             $.each(opciones,function(key,value){
-                html += "<h4>Opcion #"+parseInt(key+1)+"</h4>";
+                html += "<div><h4>Opcion #"+parseInt(key+1)+"</h4>";
                 html+= $('#agregar_opciones').html();
-                html += "<hr>";
+                html += "<hr></div>";
             });
             html+= '</form>';
             $('#modal-fixed').modal();
@@ -257,42 +269,13 @@ function update_option(id) {
  * @param id Recibe el id de la pregunta
 **/
 function del_option(element,id) {
-        bootbox.dialog({
-        message: "¿Desea borrar la opción seleccionada?",
-        title: "Alerta",
-        buttons: {
-            success: {
-                label: "Si",
-                className: "btn-success",
-                callback: function() {
-                    var token = $('input').val();
-                    $.ajax({
-                        data: {'csrfmiddlewaretoken':token},
-                        type: 'POST',
-                        url: URL_ELIMINAR_OPCIONES+id,
-                        success: function(response) {
-                            if (response.success) {
-                                remove_option(element);
-                                Materialize.toast("Se eliminó la opción con éxito", 4000);
-                            }
-                            else {
-                                Materialize.toast(response.mensaje, 4000);
-                            }
-                        },
-                        error:function(error)
-                        {
-                            Materialize.toast("Ocurrió un error inesperado", 4000);
-                        }
-                    }); 
-                }
-            },
-            close: {
-                label: "No",
-                className: "btn-danger",
-                callback: function() {}
-            }
-        }
-    });
+    $('#modal-confirm').modal();
+    $('#modal-confirm').find('.modal-title').text("Alerta");
+    $('#modal-confirm').find('.modal-content').html("¿Desea borrar la opción seleccionada?");
+    var buttons = '<a href="#!" onclick="delete_option('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
+    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
+    $('#modal-confirm').find('.modal-footer').html(buttons);
+    $('#modal-confirm').modal("open");
 }
 
 /**
@@ -300,42 +283,13 @@ function del_option(element,id) {
  * @param id Recibe el id de la pregunta
 **/
 function del_pregunta(element,id) {
-        bootbox.dialog({
-        message: "¿Desea borrar la pregunta seleccionada?",
-        title: "Alerta",
-        buttons: {
-            success: {
-                label: "Si",
-                className: "btn-success",
-                callback: function() {
-                    var token = $('input').val();
-                    $.ajax({
-                        data: {'csrfmiddlewaretoken':token},
-                        type: 'POST',
-                        url: URL_ELIMINAR_PREGUNTAS+id,
-                        success: function(response) {
-                            if (response.success) {
-                                remove_option(element);
-                                Materialize.toast("Se eliminó la pregunta con éxito", 4000);
-                            }
-                            else {
-                                Materialize.toast(response.mensaje, 4000);
-                            }
-                        },
-                        error:function(error)
-                        {
-                            Materialize.toast("Ocurrió un error inesperado", 4000);
-                        }
-                    }); 
-                }
-            },
-            close: {
-                label: "No",
-                className: "btn-danger",
-                callback: function() {}
-            }
-        }
-    });
+    $('#modal-confirm').modal();
+    $('#modal-confirm').find('.modal-title').text("Alerta");
+    $('#modal-confirm').find('.modal-content').html("¿Desea borrar la pregunta seleccionada?");
+    var buttons = '<a href="#!" onclick="delete_question('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
+    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
+    $('#modal-confirm').find('.modal-footer').html(buttons);
+    $('#modal-confirm').modal("open");
 }
 
 /**
@@ -368,12 +322,12 @@ function add_preguntas(id) {
 **/
 function validate_question(id) {
     var vacio = false;
-    $.each($('.modal-content #id_texto_pregunta_modal'),function(key,value){
+    $.each($('.modal-content #id_texto_pregunta'),function(key,value){
         if ($(value).val().trim()=='') {
             vacio = true;
         }
     });
-    $.each($('.modal-content #id_tipo_pregunta_modal'),function(key,value){
+    $.each($('.modal-content #id_tipo_pregunta'),function(key,value){
         if ($(value).val().trim()=='') {
             vacio = true;
         }
@@ -415,6 +369,61 @@ function create_question(id) {
     });
 }
 
+function delete_question(id) {
+    var token = $('input').val();
+    var input = '';
+    $.each($('#question_form').find('input'),function(index,value){
+        if ($(value).attr('name') == 'texto_pregunta_id' && $(value).val() == id) {
+            input = value;
+        }
+    });
+    $.ajax({
+        data: {'csrfmiddlewaretoken':token},
+        type: 'POST',
+        url: URL_ELIMINAR_PREGUNTAS+id,
+        success: function(response) {
+            if (response.success) {
+                $(input).parent().parent().parent().parent().remove();
+                Materialize.toast("Se eliminó la pregunta con éxito", 4000);
+            }
+            else {
+                Materialize.toast(response.mensaje, 4000);
+            }
+        },
+        error:function(error)
+        {
+            Materialize.toast("Ocurrió un error inesperado", 4000);
+        }
+    }); 
+}
+
+function delete_option(id) {
+    var token = $('input').val();
+    var input = '';
+    $.each($('#option_form').find('input'),function(index,value){
+        if ($(value).attr('name') == 'texto_opcion_id' && $(value).val() == id) {
+            input = value;
+        }
+    });
+    $.ajax({
+        data: {'csrfmiddlewaretoken':token},
+        type: 'POST',
+        url: URL_ELIMINAR_OPCIONES+id,
+        success: function(response) {
+            if (response.success) {
+                $(input).parent().parent().parent().parent().remove();
+                Materialize.toast("Se eliminó la opción con éxito", 4000);
+            }
+            else {
+                Materialize.toast(response.mensaje, 4000);
+            }
+        },
+        error:function(error)
+        {
+            Materialize.toast("Ocurrió un error inesperado", 4000);
+        }
+    }); 
+}
 /**
  * Función para actualizar las preguntas de una consulta
 **/
@@ -438,7 +447,7 @@ function update_question() {
         },
         error:function(error)
         {
-            bootbox.alert("Ocurrió un error inesperado");
+            Materialize.toast("Ocurrió un error inesperado",4000);
         }
     }); 
 }

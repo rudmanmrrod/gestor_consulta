@@ -23,5 +23,6 @@
     </div>
     <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_list' %}">Regresar</a>
     <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_update' consulta.id  %}">Actualizar</a>
+    <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_update' consulta.id  %}">Generar Nuevo Token</a>
     <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_delete' consulta.id %}"> Borrar</a>
 {% endblock %}

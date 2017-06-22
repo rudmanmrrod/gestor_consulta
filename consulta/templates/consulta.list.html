@@ -22,6 +22,7 @@
     {% empty %}
         <h3>No existen consultas.</h3>
     {% endfor %}
+    {% include 'base.paginator.html' with paginator=page_obj %}
     <div style="padding-bottom: 50px;">
         <a type="button" class="btn waves-effect deep-orange lighten-1" href="{% url 'consulta_index' %}">Regresar</a>
     </div>

@@ -14,12 +14,14 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # @version 1.0
 import json
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, TemplateView, DeleteView, DetailView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from base.functions import generar_token
 from .models import Consulta, Pregunta, TipoPregunta, Opcion
 from .forms import ConsultaForm, ConsultaPreguntaForm
@@ -141,6 +143,7 @@ class ConsultaList(LoginRequiredMixin,ListView):
     """
     model = Consulta
     template_name = "consulta.list.html"
+    paginate_by = 5
     
     def get_context_data(self, **kwargs):
         """!
@@ -154,6 +157,15 @@ class ConsultaList(LoginRequiredMixin,ListView):
         @return Retorna los datos de contexto
         """
         kwargs['object_list'] = Consulta.objects.filter(user_id=self.request.user.id).all()
+        ## Implementación del paginador
+        paginator = Paginator(kwargs['object_list'], self.paginate_by)
+        page = self.request.GET.get('page')
+        try:
+            kwargs['page_obj'] = paginator.page(page)
+        except PageNotAnInteger:
+            kwargs['page_obj'] = paginator.page(1)
+        except EmptyPage:
+            kwargs['page_obj'] = paginator.page(paginator.num_pages)
         return super(ConsultaList, self).get_context_data(**kwargs)
     
     

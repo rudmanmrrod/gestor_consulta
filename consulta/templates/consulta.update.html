@@ -7,13 +7,15 @@
         <div class="center">
             <h1>Actualizar Consulta</h1><hr>
             {% for field in form %}
-                <div class="input-field {% if field.errors %}invalid{% endif %}">
-                    {{ field }}
-                    <label for="{{ field.auto_id }}">
-                        {{ field.label }}
-                    </label>
-                    {% include 'base.forms.errors.html' with form_errors=field.errors col_title_error='col s2' col_msg_error='col s10' %}
-                </div>
+                {% if field.label != "Token" %}
+                    <div class="input-field {% if field.errors %}invalid{% endif %}">
+                        {{ field }}
+                        <label for="{{ field.auto_id }}">
+                            {{ field.label }}
+                        </label>
+                        {% include 'base.forms.errors.html' with form_errors=field.errors col_title_error='col s2' col_msg_error='col s10' %}
+                    </div>
+                {% endif %}
              {% endfor %}
              <div class="row">
                 {% if preguntas %}
