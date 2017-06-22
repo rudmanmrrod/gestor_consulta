@@ -64,10 +64,10 @@ class Pregunta(models.Model):
     texto_pregunta = models.TextField()
     
     ## Relación con el tipo de pregunta
-    tipo_pregunta = models.ForeignKey(TipoPregunta)
+    tipo_pregunta = models.ForeignKey(TipoPregunta,related_name='tipo_pregunta')
     
     ## Relación con la consulta
-    consulta = models.ForeignKey(Consulta)
+    consulta = models.ForeignKey(Consulta,related_name='preguntas')
     
     
 class Opcion(models.Model):
@@ -83,4 +83,4 @@ class Opcion(models.Model):
     texto_opcion = models.TextField()
     
     ## Relación con la pregunta
-    pregunta = models.ForeignKey(Pregunta)
+    pregunta = models.ForeignKey(Pregunta,related_name='opciones')
