@@ -240,6 +240,39 @@ class ConsultaUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
         preguntas = Pregunta.objects.filter(consulta_id=self.object.id).all()
         kwargs['preguntas'] = preguntas
         return super(ConsultaUpdate, self).get_context_data(**kwargs)
+    
+class ConsultaGenerateToken(LoginRequiredMixin,UpdateView):
+    """!
+    Clase que gestiona la actualización de consultas
+
+    @author Rodrigo Boet (rboet at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 22-06-2017
+    @version 1.0.0
+    """
+    template_name = "consulta.update.html"
+    success_url = reverse_lazy('consulta_list')
+    
+    def post(self, request, pk):
+        """!
+        Metodo que sobreescribe la acción por POST
+    
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 22-06-2017
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @param request <b>{object}</b> Objeto que contiene la petición
+        @param pk <b>{int}</b> Id de la consulta
+        @return Retorna los datos de la petición post
+        """
+        if self.request.is_ajax():
+            model = Consulta.objects.filter(pk=pk)
+            if(model):
+                model = model.get()
+                model.token = generar_token(self.request.user.id)
+                model.save()
+                return JsonResponse({"code":True})
+            return JsonResponse({"code":False,"errors":"La Consulta solicitada no existe"})
         
            
 class OpcionesCreate(LoginRequiredMixin,CreateView):

@@ -522,3 +522,54 @@ function refresh_captcha(element) {
 
     return false;
 }
+
+/**
+ * Función para mostrar el modal de confimación para generar el token
+ * @param id Recibe el id de la consulta
+**/
+function modal_token(id) {
+    var form = $('#formulario').html();
+    var html = '<h4>¿Desea generar un nuevo token?</h4>';
+    html += "<p>Su token será sobreescrito, y ya no podra consumir por servicios rest por el antiguo. <br>";
+    html += "Recuerde cambiar el token en su otra aplicación.</p>";
+    form = form.replace('/>','/>'+html);
+    $('#modal-confirm').modal();
+    $('#modal-confirm').find('.modal-title').text("Alerta");
+    $('#modal-confirm').find('.modal-content').html(form);
+    var buttons = '<a href="#!" onclick="generate_token('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
+    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
+    $('#modal-confirm').find('.modal-footer').html(buttons);
+    $('#modal-confirm').modal("open");
+}
+
+/**
+ * Función para  generar el token
+ * @param id Recibe el id de la consulta
+**/
+function generate_token(id){
+    var form = $("#formulario_modal");
+    $.ajax({
+        data: $(form).serialize(), 
+        type: 'POST',
+        url: URL_GENERAR_TOKEN+id,
+        success: function(response) {
+            if (response.code) {
+                Materialize.toast("Se actualizó el token con éxito", 4000);
+                setTimeout(function(){
+                    location.reload();    
+                },2000);
+            }
+            else{
+                var errors = '';
+                $.each(response.errors,function(key,value){
+                    errors += key+" "+value+"<br>";
+                });
+                Materialize.toast(errors, 4000);
+            }
+        },
+        error:function(error)
+        {
+            Materialize.toast("Ocurrió un error inesperado",4000);
+        }
+    }); 
+}

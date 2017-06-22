@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)$', ConsultaDelete.as_view(), name = "consulta_delete"),
     url(r'^detail/(?P<pk>\d+)$', ConsultaDetail.as_view(), name = "consulta_detail"),
     url(r'^update/(?P<pk>\d+)$', ConsultaUpdate.as_view(), name = "consulta_update"),
+    url(r'^generate-token/(?P<pk>\d+)$', ConsultaGenerateToken.as_view(), name = "consulta_token"),
     ## Urls de las preguntas
     url(r'^create-question/(?P<pk>\d+)$', PreguntaCreate.as_view(), name = "question_create"),
     url(r'^delete-question/(?P<pk>\d+)$', PreguntaDelete.as_view(), name = "question_delete"),
@@ -47,4 +48,5 @@ urlpatterns += [
     ## Urls especiales sin argumentos
     url(r'^ajax/pregunta-list/$', pregunta_list, name = "ajax_pregunta_list_nk"),
     url(r'^ajax/opciones-list/$', opciones_list, name = "ajax_opciones_list_nk"),
+    url(r'^generate-token/$', ConsultaGenerateToken.as_view(), name = "consulta_token_nk"),
 ]
