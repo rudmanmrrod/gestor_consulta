@@ -102,18 +102,30 @@ function ver_preguntas(id) {
                     html+= $('#preguntas').html();
                     html += "<hr></div>";
                 });
-                html += "</form>";
-                $('#modal-basic').modal();
-                $('#modal-basic').find('.modal-title').text("Preguntas");
-                $('#modal-basic').find('.modal-content').html(html);
-                var buttons = '<a href="#!" onclick="update_question();" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Guardar</a>';
-                buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Cerrar</a>';
-                $('#modal-basic').find('.modal-footer').html(buttons);
-                $.each($('.modal-content #id_texto_pregunta_modal'),function(key,value){
+                MaterialDialog.dialog(
+                    html,
+                    {
+                        title:"",
+                        buttons:{
+                            close:{
+                                className:"deep-orange lighten-1",
+                                text:"Cerrar",
+                            },
+                            confirm:{
+                                className:"deep-orange lighten-1",
+                                text:"Guardar",
+                                callback:function(){
+                                    update_question();
+                                }
+                            }
+                        }
+                    }
+                );
+                $.each($('.material-dialog').last().find('.modal-content #id_texto_pregunta_modal'),function(key,value){
                     $(value).val(preguntas[key]['texto_pregunta']);
                     $(value).append('<input type="hidden" name="texto_pregunta_id" value="'+preguntas[key]['id']+'">');
                 });
-                $.each($('.modal-content select'),function(key,value){
+                $.each($('.material-dialog').last().find('.modal-content select'),function(key,value){
                     $(value).val(preguntas[key]['tipo_pregunta']).change();
                     if (preguntas[key]['tipo_pregunta']<=2) {
                         var padre = $(value).parent().parent();
@@ -127,10 +139,9 @@ function ver_preguntas(id) {
                         $(padre).append(html);
                     }
                 });
-                $.each($('.modal-content span a'),function(key,value){
-                    $(value).attr('onclick','del_pregunta(this,'+preguntas[key]['id']+')');
+                $.each($('.material-dialog').last().find('.modal-content span a'),function(key,value){
+                    $(value).attr('onclick','del_pregunta('+preguntas[key]['id']+')');
                 });
-                $('#modal-basic').modal("open");
                 $('select').material_select();
             }
             else{
@@ -149,15 +160,28 @@ function ver_preguntas(id) {
  * @param id Recibe el id de la pregunta
 **/
 function agregar_opcion(id) {
-    $('#modal-fixed').modal();
-    $('#modal-fixed').find('.modal-title').text("Preguntas");
-    $('#modal-fixed').find('.modal-content').html($('#formulario').html());
-    var buttons = '<a href="#!" onclick="submitOption(this);" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Guardar</a>';
-    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Cerrar</a>';
-    $('#formulario_modal').append($('#agregar_opciones_base').html());
-    $('#formulario_modal').append(buttons);
-    $('#formulario_modal').attr('action',id);
-    $('#modal-fixed').modal("open");
+    MaterialDialog.dialog(
+        $('#formulario').html(),
+        {
+            title:"Opciones",
+            modalType:"bottom-sheet",
+            buttons:{
+                close:{
+                    className:"deep-orange lighten-1",
+                    text:"Cerrar",
+                },
+                confirm:{
+                    className:"deep-orange lighten-1",
+                    text:"Guardar",
+                    callback:function(){
+                        submitOption(this);
+                    }
+                }
+            }
+        }
+    );
+    $('.material-dialog').last().find('#formulario_modal').append($('#agregar_opciones_base').html());
+    $('.material-dialog').last().find('#formulario_modal').attr('action',id);
 }
 
 /**
@@ -217,20 +241,34 @@ function see_option(id) {
                 html += "<hr></div>";
             });
             html+= '</form>';
-            $('#modal-fixed').modal();
-            $('#modal-fixed').find('.modal-title').text("Opciones");
-            $('#modal-fixed').find('.modal-content').html(html);
-            var buttons = '<a href="#!" onclick="update_option('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Guardar</a>';
-            buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Cerrar</a>';
-            $('#modal-fixed').find('.modal-footer').html(buttons);
-            $.each($('.modal-content #option_form #id_texto_opcion'),function(key,value){
+            MaterialDialog.dialog(
+                html,
+                {
+                    title:"Opciones",
+                    modalType:"bottom-sheet",
+                    buttons:{
+                        close:{
+                            className:"deep-orange lighten-1",
+                            text:"Cerrar",
+                        },
+                        confirm:{
+                            className:"deep-orange lighten-1",
+                            text:"Guardar",
+                            modalClose:false,
+                            callback:function(){
+                                update_option(id);
+                            }
+                        }
+                    }
+                }
+            );
+            $.each($('.material-dialog').last().find('.modal-content #option_form #id_texto_opcion'),function(key,value){
                 $(value).val(opciones[key]['texto_opcion']);
                 $(value).append('<input type="hidden" name="texto_opcion_id" value="'+opciones[key]['id']+'">');
             });
-            $.each($('.modal-content #option_form #opciones a'),function(key,value){
+            $.each($('.material-dialog').last().find('.modal-content #option_form #opciones a'),function(key,value){
                 $(value).attr('onclick','del_option(this,'+opciones[key]['id']+')');
             });
-            $('#modal-fixed').modal("open");
             }
         },
         error:function(error)
@@ -270,13 +308,25 @@ function update_option(id) {
  * @param id Recibe el id de la pregunta
 **/
 function del_option(id) {
-    $('#modal-confirm').modal();
-    $('#modal-confirm').find('.modal-title').text("Alerta");
-    $('#modal-confirm').find('.modal-content').html("¿Desea borrar la opción seleccionada?");
-    var buttons = '<a href="#!" onclick="delete_option('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
-    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
-    $('#modal-confirm').find('.modal-footer').html(buttons);
-    $('#modal-confirm').modal("open");
+    MaterialDialog.dialog(
+        "¿Desea borrar la opción seleccionada?",
+        {
+            title:"Alerta",
+            buttons:{
+                close:{
+                    className:"deep-orange lighten-1",
+                    text:"No",
+                },
+                confirm:{
+                    className:"deep-orange lighten-1",
+                    text:"Si",
+                    callback:function(){
+                        delete_option(id);
+                    }
+                }
+            }
+        }
+    );
 }
 
 /**
@@ -284,13 +334,25 @@ function del_option(id) {
  * @param id Recibe el id de la pregunta
 **/
 function del_pregunta(id) {
-    $('#modal-confirm').modal();
-    $('#modal-confirm').find('.modal-title').text("Alerta");
-    $('#modal-confirm').find('.modal-content').html("¿Desea borrar la pregunta seleccionada?");
-    var buttons = '<a href="#!" onclick="delete_question('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
-    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
-    $('#modal-confirm').find('.modal-footer').html(buttons);
-    $('#modal-confirm').modal("open");
+    MaterialDialog.dialog(
+        "¿Desea borrar la pregunta seleccionada?",
+        {
+            title:"Alerta",
+            buttons:{
+                close:{
+                    className:"deep-orange lighten-1",
+                    text:"No",
+                },
+                confirm:{
+                    className:"deep-orange lighten-1",
+                    text:"Si",
+                    callback:function(){
+                        delete_question(id);
+                    }
+                }
+            }
+        }
+    );
 }
 
 /**
@@ -307,14 +369,27 @@ function add_preguntas(id) {
     html += '<div id="agregar_preguntas">';
     html += $('#preguntas_base').html();
     html += '</div></form>';
-    $('#modal-basic').modal();
-    $('#modal-basic').find('.modal-title').text("Opciones");
-    $('#modal-basic').find('.modal-content').html(html);
-    var buttons = '<a href="#!" onclick="validate_question('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Guardar</a>';
-    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Cerrar</a>';
-    $('#modal-basic').find('.modal-footer').html(buttons);
+    MaterialDialog.dialog(
+        html,
+        {
+            title:"Agregar Preguntas",
+            buttons:{
+                // Use by default close and confirm buttons
+                close:{
+                    className:"deep-orange lighten-1",
+                    text:"Cerrar",
+                },
+                confirm:{
+                    className:"deep-orange lighten-1",
+                    text:"Guardar",
+                    callback:function(){
+                        validate_question(id);
+                    }
+                }
+            }
+        }
+    );
     $('select').material_select();
-    $('#modal-basic').modal("open");
 }
 
 /**
@@ -323,12 +398,12 @@ function add_preguntas(id) {
 **/
 function validate_question(id) {
     var vacio = false;
-    $.each($('.modal-content #id_texto_pregunta'),function(key,value){
+    $.each($('.material-dialog').last().find('.modal-content #id_texto_pregunta'),function(key,value){
         if ($(value).val().trim()=='') {
             vacio = true;
         }
     });
-    $.each($('.modal-content #id_tipo_pregunta'),function(key,value){
+    $.each($('.material-dialog').last().find('.modal-content #id_tipo_pregunta'),function(key,value){
         if ($(value).val().trim()=='') {
             vacio = true;
         }
@@ -533,13 +608,25 @@ function modal_token(id) {
     html += "<p>Su token será sobreescrito, y ya no podra consumir por servicios rest por el antiguo. <br>";
     html += "Recuerde cambiar el token en su otra aplicación.</p>";
     form = form.replace('/>','/>'+html);
-    $('#modal-confirm').modal();
-    $('#modal-confirm').find('.modal-title').text("Alerta");
-    $('#modal-confirm').find('.modal-content').html(form);
-    var buttons = '<a href="#!" onclick="generate_token('+id+');" class="modal-action modal-close waves-effect btn deep-orange lighten-1">Si</a>';
-    buttons += '<a href="#!" class="modal-action modal-close waves-effect btn deep-orange lighten-1">No</a>';
-    $('#modal-confirm').find('.modal-footer').html(buttons);
-    $('#modal-confirm').modal("open");
+    MaterialDialog.dialog(
+        form,
+        {
+            title:"Alerta",
+            buttons:{
+                close:{
+                    className:"deep-orange lighten-1",
+                    text:"No",
+                },
+                confirm:{
+                    className:"deep-orange lighten-1",
+                    text:"Si",
+                    callback:function(){
+                        generate_token(id);
+                    }
+                }
+            }
+        }
+    );
 }
 
 /**
