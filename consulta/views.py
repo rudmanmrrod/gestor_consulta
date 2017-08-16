@@ -273,8 +273,8 @@ class ConsultaGenerateToken(LoginRequiredMixin,UpdateView):
                 model.save()
                 return JsonResponse({"code":True})
             return JsonResponse({"code":False,"errors":"La Consulta solicitada no existe"})
-        
-           
+
+
 class OpcionesCreate(LoginRequiredMixin,CreateView):
     """!
     Clase que gestiona la creación de opciones
@@ -554,4 +554,3 @@ class PreguntaUpdate(LoginRequiredMixin, UpdateView):
 
         if self.request.is_ajax():
             return JsonResponse({"code":True})
-    

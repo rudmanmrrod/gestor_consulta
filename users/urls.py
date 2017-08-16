@@ -16,6 +16,7 @@ from django.conf.urls import url
 from django.contrib.auth.views import *
 from .forms import PasswordResetForm, PasswordConfirmForm
 from .views import *
+from users import views
 
 urlpatterns = [
     url(r'^login$', LoginView.as_view(), name = "login"),
@@ -36,4 +37,7 @@ urlpatterns = [
     url(r'^password/end/$', password_reset_done,
         {'template_name': 'user.passwordreset.end.html'},
         name='reset_end'),
+    ##### API REST URLS #####
+    url(r'^users/$', views.UsersList.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
 ]

@@ -69,7 +69,7 @@ class PreguntaSerializer(serializers.HyperlinkedModelSerializer):
 
 # Serializers define the API representation.
 class ConsultaSerializer(serializers.HyperlinkedModelSerializer):
-    
+
     preguntas = PreguntaSerializer(many=True, read_only=True)
     class Meta:
         model = Consulta
