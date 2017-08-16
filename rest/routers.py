@@ -14,9 +14,10 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # @version 1.0
 from rest_framework.routers import DefaultRouter
 from consulta.rest import ConsultaViewSet
-from base.rest import EntidadViewSet
+from base.rest import EntidadViewSet, MunicipioViewSet
 
 router = DefaultRouter()
 # ------------------------------------------
 router.register(r'consulta/(?P<token>.+)', ConsultaViewSet, 'consulta')
 router.register(r'entidad', EntidadViewSet, 'entidad')
+router.register(r'municipio', MunicipioViewSet, 'municipio')

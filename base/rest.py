@@ -12,8 +12,8 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
 # @version 1.0
-from base.models import Entidad
-from .serializers import EntidadSerializer
+from base.models import Entidad, Municipio
+from .serializers import EntidadSerializer, MunicipioSerializer
 from rest_framework import viewsets
 
 
@@ -28,4 +28,18 @@ class EntidadViewSet(viewsets.ModelViewSet):
     """
     queryset = Entidad.objects.all()
     serializer_class = EntidadSerializer
+    http_method_names = ['get','head']
+
+
+class MunicipioViewSet(viewsets.ModelViewSet):
+    """!
+    Clase que gestiona los datos rest de los Municipios
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 16-08-2017
+    @version 1.0.0
+    """
+    queryset = Municipio.objects.all()
+    serializer_class = MunicipioSerializer
     http_method_names = ['get','head']
