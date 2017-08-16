@@ -74,4 +74,3 @@ class ConsultaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Consulta
         fields = ('nombre_consulta', 'activa','preguntas')
-        

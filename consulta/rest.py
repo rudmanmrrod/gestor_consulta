@@ -28,7 +28,7 @@ class ConsultaViewSet(viewsets.ModelViewSet):
     """
     serializer_class = ConsultaSerializer
     http_method_names = ['get','head']
-    
+
     def get_queryset(self):
         """!
         Metodo que permite generar la consulta al modelo
