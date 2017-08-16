@@ -4,19 +4,22 @@ Sistema de Consulta Pública
 
 Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/trac/wiki/ModeladoTopicos_2017
 """
-## @package rest.routers
+## @package consulta.rest
 #
-# Routers de los viewset de la aplicaciones rest
+# ViewSet (vistas de los rest) para el rest framework
 # @author Rodrigo Boet (rboet at cenditel.gob.ve)
 # @author <a href='http://www.cenditel.gob.ve'>Centro Nacional de Desarrollo e Investigación en Tecnologías Libres
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
 # @version 1.0
-from rest_framework.routers import DefaultRouter
-from consulta.rest import ConsultaViewSet
-from base.rest import EntidadViewSet
+from base.models import Entidad
+from .serializers import EntidadSerializer
+from rest_framework import viewsets
 
-router = DefaultRouter()
-# ------------------------------------------
-router.register(r'consulta/(?P<token>.+)', ConsultaViewSet, 'consulta')
-router.register(r'entidad', EntidadViewSet, 'entidad')
+
+class EntidadViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Entidad.objects.all()
+    serializer_class = EntidadSerializer
