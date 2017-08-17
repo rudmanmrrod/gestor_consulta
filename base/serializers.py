@@ -13,7 +13,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
 # @version 1.0
 from rest_framework import serializers
-from .models import Entidad, Municipio
+from .models import Entidad, Municipio, Parroquia
 
 
 class EntidadSerializer(serializers.HyperlinkedModelSerializer):
@@ -29,12 +29,12 @@ class EntidadSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Entidad
-        fields = ('id', 'codigo', 'nombre')
+        fields = ('url', 'id', 'codigo', 'nombre')
 
 
 class MunicipioSerializer(serializers.HyperlinkedModelSerializer):
     """!
-    Metodo que permite serializar el modelo Entidad
+    Metodo que permite serializar el modelo Municipio
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
     @copyright GNU/GPLv2
@@ -45,4 +45,20 @@ class MunicipioSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Municipio
-        fields = ('id', 'codigo', 'nombre')
+        fields = ('url', 'codigo', 'nombre', 'entidad')
+
+
+class ParroquiaSerializer(serializers.HyperlinkedModelSerializer):
+    """!
+    Metodo que permite serializar el modelo Parroquia
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright GNU/GPLv2
+    @date 17-08-2017
+    @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
+    @return Retorna los datos de contexto
+    """
+
+    class Meta:
+        model = Parroquia
+        fields = ('url', 'codigo', 'nombre', 'municipio')
