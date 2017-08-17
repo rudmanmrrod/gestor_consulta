@@ -23,6 +23,12 @@ from django.contrib import messages
 from .forms import LoginForm, UserRegisterForm, PerfilForm
 from .models import Perfil
 from base.models import Parroquia
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+from serializers import UserSerializer
+
 
 class LoginView(FormView):
     """!
@@ -227,3 +233,31 @@ class PerfilUpdate(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
         self.object.save()
         
         return super(PerfilUpdate, self).form_valid(form)
+
+
+class UsersList(generics.ListAPIView):
+    """!
+    Clase que permite listar los datos rest de los usuarios
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 17-08-2017
+    @version 1.0.0
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_fields = ('id', 'username', 'email', 'first_name', 'last_name', 'is_superuser', 'is_staff',
+        'is_active', 'date_joined', 'last_login',)
+
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    """!
+    Clase que permite detallar los datos rest de los usuarios
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 17-08-2017
+    @version 1.0.0
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

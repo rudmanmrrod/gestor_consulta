@@ -5,3 +5,4 @@ djangorestframework==3.6.3
 olefile==0.44
 pytz==2017.2
 six==1.10.0
+django-filter

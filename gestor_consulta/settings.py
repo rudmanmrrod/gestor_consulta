@@ -45,6 +45,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     'captcha',
     'rest_framework',
+    'django_filters',
 ]
 
 PROJECT_APPS = [
@@ -155,3 +156,7 @@ STATICFILES_DIRS = (
 PROCESAMIENTO_PATH = os.path.join(BASE_DIR, 'static/procesamiento_files')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+}
