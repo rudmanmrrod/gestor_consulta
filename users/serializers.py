@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-	"""!
+    """!
     Metodo que permite serializar el modelo User
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
