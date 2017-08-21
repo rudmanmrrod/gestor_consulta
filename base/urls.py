@@ -24,7 +24,4 @@ urlpatterns = [
 ## Ajax
 urlpatterns +=[
     url(r'^ajax/actualizar-combo/?$', actualizar_combo, name='actualizar_combo'),
-    ##### Probando los filtros del API REST #######
-    url(r'^entidad/$', views.EntidadList.as_view()),
-    url(r'^entidad/(?P<pk>[0-9]+)/$', views.EntidadDetail.as_view()),
 ]

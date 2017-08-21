@@ -29,7 +29,7 @@ class EntidadSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Entidad
-        fields = ('url', 'id', 'codigo', 'nombre')
+        fields = ('id', 'codigo', 'nombre')
 
 
 class MunicipioSerializer(serializers.HyperlinkedModelSerializer):
@@ -45,7 +45,7 @@ class MunicipioSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Municipio
-        fields = ('url', 'codigo', 'nombre', 'entidad')
+        fields = ('id', 'codigo', 'nombre', 'entidad')
 
 
 class ParroquiaSerializer(serializers.HyperlinkedModelSerializer):
@@ -61,4 +61,4 @@ class ParroquiaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Parroquia
-        fields = ('url', 'codigo', 'nombre', 'municipio')
+        fields = ('id', 'codigo', 'nombre', 'municipio')

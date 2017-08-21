@@ -28,6 +28,7 @@ class EntidadViewSet(viewsets.ModelViewSet):
     """
     queryset = Entidad.objects.all()
     serializer_class = EntidadSerializer
+    filter_fields = ('id', 'codigo', 'nombre',)
     http_method_names = ['get','head']
 
 
@@ -42,6 +43,7 @@ class MunicipioViewSet(viewsets.ModelViewSet):
     """
     queryset = Municipio.objects.all()
     serializer_class = MunicipioSerializer
+    filter_fields = ('id', 'codigo', 'nombre',)
     http_method_names = ['get','head']
 
 
@@ -56,4 +58,5 @@ class ParroquiaViewSet(viewsets.ModelViewSet):
     """
     queryset = Parroquia.objects.all()
     serializer_class = ParroquiaSerializer
+    filter_fields = ('id', 'codigo', 'nombre',)
     http_method_names = ['get','head']
