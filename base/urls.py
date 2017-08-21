@@ -14,6 +14,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # @version 1.0
 from django.conf.urls import url
 from .views import *
+from base import views
 
 urlpatterns = [
     url(r'^$', Inicio.as_view(), name = "inicio"),
@@ -23,4 +24,7 @@ urlpatterns = [
 ## Ajax
 urlpatterns +=[
     url(r'^ajax/actualizar-combo/?$', actualizar_combo, name='actualizar_combo'),
+    ##### Probando los filtros del API REST #######
+    url(r'^entidad/$', views.EntidadList.as_view()),
+    url(r'^entidad/(?P<pk>[0-9]+)/$', views.EntidadDetail.as_view()),
 ]

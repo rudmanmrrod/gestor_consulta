@@ -17,8 +17,14 @@ from django.http import HttpResponse
 from django.apps import apps
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 import json
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+from serializers import EntidadSerializer, MunicipioSerializer, ParroquiaSerializer
+from models import Entidad, Municipio, Parroquia
+
 
 class Error403(TemplateView):
     """!
@@ -108,3 +114,30 @@ def actualizar_combo(request):
 
     except Exception as e:
         return HttpResponse(json.dumps({'resultado': False, 'error': e}))
+
+
+class EntidadList(generics.ListAPIView):
+    """!
+    Clase que permite listar los datos rest de los usuarios
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 17-08-2017
+    @version 1.0.0
+    """
+    queryset = Entidad.objects.all()
+    serializer_class = EntidadSerializer
+    filter_fields = ('id', 'codigo', 'nombre',)
+
+
+class EntidadDetail(generics.RetrieveUpdateDestroyAPIView):
+    """!
+    Clase que permite detallar los datos rest de los usuarios
+
+    @author Argenis Osorio (aosorio at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 17-08-2017
+    @version 1.0.0
+    """
+    queryset = Entidad.objects.all()
+    serializer_class = EntidadSerializer

@@ -246,8 +246,8 @@ class UsersList(generics.ListAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    filter_fields = ('id', 'username', 'email', 'first_name', 'last_name', 'is_superuser', 'is_staff',
-        'is_active', 'date_joined', 'last_login',)
+    #filter_fields = ('id', 'username', 'email', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active', 'date_joined', 'last_login',)
+    filter_fields = ('id', 'username', 'email',)
 
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
