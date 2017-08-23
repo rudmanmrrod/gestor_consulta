@@ -35,7 +35,7 @@ class ConsultaForm(forms.ModelForm):
     
     class Meta:
         model = Consulta
-        exclude = ['user']
+        exclude = ['user','token']
 
 class ConsultaPreguntaForm(forms.ModelForm):
     """!

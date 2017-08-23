@@ -39,4 +39,4 @@ class ConsultaViewSet(viewsets.ModelViewSet):
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna los datos de contexto
         """
-        return Consulta.objects.filter(token=self.kwargs['token']).all()
+        return Consulta.objects.filter(token=self.kwargs['token'],activa=True).all()
