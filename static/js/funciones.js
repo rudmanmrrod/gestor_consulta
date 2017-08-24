@@ -282,7 +282,7 @@ function see_option(id) {
  * @param id Recibe el id de la pregunta
 **/
 function update_option(id) {
-    var form = $("#option_form");
+    var form = $('.material-dialog').last().find("#option_form");
     $.ajax({
         data: $(form).serialize(), 
         type: 'POST',
