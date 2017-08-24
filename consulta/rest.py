@@ -15,6 +15,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 from .serializers import ConsultaSerializer, PreguntaSerializer
 from .models import Consulta, Pregunta
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 
 class ConsultaViewSet(viewsets.ModelViewSet):
@@ -28,6 +29,7 @@ class ConsultaViewSet(viewsets.ModelViewSet):
     """
     serializer_class = ConsultaSerializer
     http_method_names = ['get','head']
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         """!

@@ -174,7 +174,7 @@ function agregar_opcion(id) {
                     className:"deep-orange lighten-1",
                     text:"Guardar",
                     callback:function(){
-                        submitOption(this);
+                        submitOption($('.material-dialog #formulario_modal').last());
                     }
                 }
             }
@@ -189,7 +189,7 @@ function agregar_opcion(id) {
  * @param objecto Recibe el objecto
 **/
 function submitOption(objecto) {
-    var input = $(objecto).parent().parent().find('#opciones #id_texto_opcion');
+    var input = $(objecto).find('#opciones #id_texto_opcion');
     var vacio = false;
     $.each(input,function(key,value){
         if ($(value).val().trim()=='') {
@@ -197,11 +197,10 @@ function submitOption(objecto) {
         }
     });
     if (!vacio) {
-        var form = $(objecto).parent().parent().find('form');
         $.ajax({
-            data: $(form).serialize(), 
+            data: $(objecto).serialize(), 
             type: 'POST',
-            url: URL_CREAR_OPCIONES+$(form).attr('action'),
+            url: URL_CREAR_OPCIONES+$(objecto).attr('action'),
             success: function(response) {
                 if (response.code) {
                     Materialize.toast('Se crearon las opciones con éxito', 4000);
@@ -307,7 +306,7 @@ function update_option(id) {
  * Función para eliminar las opciones de un pregunta
  * @param id Recibe el id de la pregunta
 **/
-function del_option(id) {
+function del_option(objeto,id) {
     MaterialDialog.dialog(
         "¿Desea borrar la opción seleccionada?",
         {
@@ -321,7 +320,7 @@ function del_option(id) {
                     className:"deep-orange lighten-1",
                     text:"Si",
                     callback:function(){
-                        delete_option(id);
+                        delete_option(objeto,id);
                     }
                 }
             }
@@ -481,10 +480,10 @@ function delete_question(id) {
  * Función para eliminar un opcion
  * @param id Recibe el id de la opcion
 **/
-function delete_option(id) {
+function delete_option(objeto,id) {
     var token = $('input').val();
     var input = '';
-    $.each($('#option_form').find('input'),function(index,value){
+    $.each($(objeto).find('#option_form input'),function(index,value){
         if ($(value).attr('name') == 'texto_opcion_id' && $(value).val() == id) {
             input = value;
         }
@@ -495,7 +494,7 @@ function delete_option(id) {
         url: URL_ELIMINAR_OPCIONES+id,
         success: function(response) {
             if (response.success) {
-                $(input).parent().parent().parent().parent().remove();
+                $(objeto).parent().parent().remove();
                 Materialize.toast("Se eliminó la opción con éxito", 4000);
             }
             else {
