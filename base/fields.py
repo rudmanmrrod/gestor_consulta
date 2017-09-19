@@ -16,6 +16,8 @@ from __future__ import unicode_literals
 
 from django.forms import MultiValueField, ChoiceField, CharField
 
+from rest_framework import serializers
+
 from .constant import SHORT_NACIONALIDAD
 from .widgets import CedulaWidget
 
@@ -56,3 +58,13 @@ class CedulaField(MultiValueField):
         if data_list:
             return ''.join(data_list)
         return ''
+    
+class CedulaRestField(serializers.Field):
+    def to_representation(self, obj):
+        return "some here"
+
+    def to_representation(self, obj):
+        """
+        Serialize the object's class name.
+        """
+        return obj.__class__.__name__
