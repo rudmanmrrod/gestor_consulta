@@ -7,6 +7,8 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 ## @package rest.routers
 #
 # Routers de los viewset de la aplicaciones rest
+# @author Antonio Araujo (aaraujo at cenditel.gob.ve)
+# @author Argenis Osorio (aosorio at cenditel.gob.ve)
 # @author Rodrigo Boet (rboet at cenditel.gob.ve)
 # @author <a href='http://www.cenditel.gob.ve'>Centro Nacional de Desarrollo e Investigación en Tecnologías Libres
 # (CENDITEL) nodo Mérida - Venezuela</a>

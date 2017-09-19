@@ -1,6 +1,7 @@
 *.pyc
 *.py~
-*.squlite3
+*.sqlite3
 migrations
 migrations/*
 static/procesamiento_files/*
+db.sqlite3
