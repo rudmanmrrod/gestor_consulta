@@ -16,6 +16,8 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest.routers import router
+from rest_framework_jwt.views import obtain_jwt_token
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,5 +26,6 @@ urlpatterns = [
     url(r'^', include('users.urls')),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(router.urls))
+    url(r'^api/', include(router.urls)),
+    url(r'^api-token-auth/', obtain_jwt_token),
 ]
