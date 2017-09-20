@@ -26,7 +26,7 @@ from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from base.fields import CedulaField
 from base.functions import (
     cargar_entidad, cargar_municipios, cargar_parroquias,
-    validate_cedula, validate_email
+    validate_cedula, validate_email, validate_username
     )
 from base.models import Municipio, Parroquia
 from .models import Perfil
@@ -377,7 +377,8 @@ class UserForm(forms.Form):
         widget=forms.TextInput(),
         label="Correo"
         )
-
+    
+    ## cédula
     cedula = forms.CharField(max_length=9,
         validators=[RegexValidator(
             regex='^[V|E][0-9]{7,8}',
@@ -385,6 +386,9 @@ class UserForm(forms.Form):
             )],
         label="Cedula"
         )
+    
+    ## parroquia
+    parroquia = forms.ChoiceField(widget=forms.Select(),choices=cargar_parroquias())
 
     # validations
     def clean_password_repeat(self):
@@ -397,7 +401,6 @@ class UserForm(forms.Form):
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna el campo con la validacion
         """
-        print("******clean_password_repeat")
         password = self.cleaned_data['password']
         password_repeat = self.cleaned_data['password_repeat']
         if(password_repeat!=password):
@@ -421,7 +424,7 @@ class UserForm(forms.Form):
 
     def clean_email(self):
         """!
-        Método que valida si el correo es única
+        Método que valida si el correo es único
 
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
         @copyright GNU/GPLv2
@@ -433,8 +436,19 @@ class UserForm(forms.Form):
         if(validate_email(email)):
             raise forms.ValidationError("El correo ingresado ya existe")
         return email
+    
+    def clean_username(self):
+        """!
+        Método que valida si el nombre de usuario es único
 
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 20-09-2017
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @return Retorna el campo con la validacion
+        """
+        username = self.cleaned_data['username']
+        if(validate_username(username)):
+            raise forms.ValidationError("El nombre de usuario ingresado ya existe")
+        return username
 
-    def validate(self, data):
-        print(data)
-        return data

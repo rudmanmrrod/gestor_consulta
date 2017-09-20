@@ -21,6 +21,7 @@ from base.functions import (
     cargar_entidad, cargar_municipios, cargar_parroquias,
     validate_cedula, validate_email
     )
+from base.models import Parroquia
 from .forms import UserForm
 from .models import Perfil
 from drf_braces.serializers.form_serializer import FormSerializer
@@ -62,10 +63,38 @@ class RegistroSerializer(FormSerializer):
     Clase serializador de registro de usuario
 
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
+    @author Rodrigo Boet (rboet at cenditel.gob.ve)
     @copyright GNU/GPLv2
     @date 19-09-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
     """
+    def save(self):
+        """!
+        Metodo que guarda lols registros del formulario
+    
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 20-09-2017
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @return Retorna verdadero si se guarda
+        """
+        user = User()
+        user.username = self.validated_data['username']
+        user.first_name = self.validated_data['nombre']
+        user.last_name = self.validated_data['apellido']
+        user.set_password(self.validated_data['password'])
+        user.email = self.validated_data['email']
+        user.save()
+               
+        parroquia = Parroquia.objects.get(id=self.validated_data['parroquia'])
+        
+        perfil = Perfil()
+        perfil.cedula = self.validated_data['cedula']
+        perfil.parroquia = parroquia
+        perfil.user = user
+        perfil.save()
+        return True
+    
     class Meta(object):
             form = UserForm

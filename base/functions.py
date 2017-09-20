@@ -162,6 +162,23 @@ def validate_email(email):
     else:
         return False
     
+def validate_username(username):
+    """!
+    Función que permite validar el nombre de usuario
+
+    @author Rodrigo Boet (rboet at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 20-09-2017
+    @param username {str} Recibe el nombre de usuario
+    @return Devuelve verdadero o falso
+    """
+    
+    usr = User.objects.filter(username=username)
+    if usr:
+        return True
+    else:
+        return False
+    
 def generar_token(id):
     """!
     Función que genera un token en base a un id

@@ -123,10 +123,7 @@ class RegisterView(SuccessMessageMixin,FormView):
         self.object.set_password(form.cleaned_data['password'])
         self.object.email = form.cleaned_data['email']
         self.object.save()
-        
-        ## Se asigna el grupo de Participantes por defecto
-        self.object.groups.add(2)
-        
+              
         parroquia = Parroquia.objects.get(id=form.cleaned_data['parroquia'])
         
         perfil = Perfil()
