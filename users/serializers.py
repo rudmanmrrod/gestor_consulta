@@ -15,7 +15,6 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 from django import forms
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from drf_braces.serializers.form_serializer import FormSerializer
 from base.fields import CedulaField
 from base.functions import (
     cargar_entidad, cargar_municipios, cargar_parroquias,

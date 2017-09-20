@@ -15,7 +15,6 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 from .models import Consulta, Pregunta, Opcion, TipoPregunta
 from rest_framework import serializers
 
-# Serializers define the API representation.
 class OpcionSerializer(serializers.HyperlinkedModelSerializer):
     """!
     Metodo que permite serializar el modelo opcion
@@ -31,7 +30,6 @@ class OpcionSerializer(serializers.HyperlinkedModelSerializer):
         model = Opcion
         fields = ('texto_opcion',)
 
-# Serializers define the API representation.
 class TipoPreguntaSerializer(serializers.HyperlinkedModelSerializer):
     """!
     Metodo que permite serializar el modelo tipo de pregunta
@@ -47,7 +45,6 @@ class TipoPreguntaSerializer(serializers.HyperlinkedModelSerializer):
         model = TipoPregunta
         fields = ('tipo',)
 
-# Serializers define the API representation.
 class PreguntaSerializer(serializers.HyperlinkedModelSerializer):
     """!
     Metodo que permite serializar el modelo pregunta
@@ -67,7 +64,6 @@ class PreguntaSerializer(serializers.HyperlinkedModelSerializer):
         model = Pregunta
         fields = ('texto_pregunta','tipo_pregunta','opciones')
 
-# Serializers define the API representation.
 class ConsultaSerializer(serializers.HyperlinkedModelSerializer):
 
     preguntas = PreguntaSerializer(many=True, read_only=True)

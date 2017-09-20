@@ -8,6 +8,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 #
 # ViewSet (vistas de los rest) para el rest framework
 # @author Argenis Osorio (aosorio at cenditel.gob.ve)
+# @author Rodrigo Boet (rboet at cenditel.gob.ve)
 # @author <a href='http://www.cenditel.gob.ve'>Centro Nacional de Desarrollo e Investigación en Tecnologías Libres
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
@@ -41,12 +42,27 @@ class MunicipioViewSet(viewsets.ModelViewSet):
     @date 16-08-2017
     @version 1.0.0
     """
-    queryset = Municipio.objects.all()
     serializer_class = MunicipioSerializer
     filter_fields = ('id', 'codigo', 'nombre',)
     http_method_names = ['get','head']
-
-
+    
+    def get_queryset(self):
+        """!
+        Función organizar la consulta
+    
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 20-09-17
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @return Retorna un la consulta
+        """
+        queryset = Municipio.objects.all()
+        estado = self.request.query_params.get('estado', None)
+        if estado is not None:
+            queryset = queryset.filter(entidad_id=estado)
+        return queryset
+    
+    
 class ParroquiaViewSet(viewsets.ModelViewSet):
     """!
     Clase que gestiona los datos rest de las Parroquias
@@ -56,7 +72,22 @@ class ParroquiaViewSet(viewsets.ModelViewSet):
     @date 17-08-2017
     @version 1.0.0
     """
-    queryset = Parroquia.objects.all()
     serializer_class = ParroquiaSerializer
     filter_fields = ('id', 'codigo', 'nombre',)
     http_method_names = ['get','head']
+    
+    def get_queryset(self):
+        """!
+        Función organizar la consulta
+    
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 20-09-17
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @return Retorna un la consulta
+        """
+        queryset = Parroquia.objects.all()
+        municipio = self.request.query_params.get('municipio', None)
+        if municipio is not None:
+            queryset = queryset.filter(municipio_id=municipio)
+        return queryset
