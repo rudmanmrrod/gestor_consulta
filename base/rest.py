@@ -11,7 +11,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # @author Rodrigo Boet (rboet at cenditel.gob.ve)
 # @author <a href='http://www.cenditel.gob.ve'>Centro Nacional de Desarrollo e Investigación en Tecnologías Libres
 # (CENDITEL) nodo Mérida - Venezuela</a>
-# @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+# @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
 from base.models import Entidad, Municipio, Parroquia
 from .serializers import EntidadSerializer, MunicipioSerializer, ParroquiaSerializer
@@ -39,6 +39,7 @@ class MunicipioViewSet(viewsets.ModelViewSet):
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
     @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @param estado Puede recibir el id del estado por GET
     @date 16-08-2017
     @version 1.0.0
     """
@@ -69,6 +70,7 @@ class ParroquiaViewSet(viewsets.ModelViewSet):
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
     @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @param municipio Puede recibir el id del municipio por GET
     @date 17-08-2017
     @version 1.0.0
     """
