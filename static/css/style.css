@@ -7,12 +7,29 @@
      flex: 1 0 auto;
  }
  
+/* Input colors */
+.input-field .prefix.active{
+    color: #ff5722;
+}
+
+.input-field input[type=text]:focus + label,
+.input-field input[type=password]:focus + label
+{
+  color: #ff5722;
+}
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus
+{
+  border-bottom: 1px solid #ff5722;
+  box-shadow: 0 1px 0 0 #ff5722;
+}
+
 .invalid input {
     border-bottom: 1px solid #F44336;
     box-shadow: 0 1px 0 0 #F44336;
 }
 
-.invalid label,.invalid  i {
+.invalid label,.invalid  i, .errorlist, .danger {
     color: #F44336;
 }
 
