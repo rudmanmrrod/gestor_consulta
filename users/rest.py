@@ -20,6 +20,7 @@ from .serializers import PerfilSerializer, RegistroSerializer
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from drf_braces.mixins import MultipleSerializersViewMixin
 
 
@@ -66,3 +67,29 @@ class FormViewSet(MultipleSerializersViewMixin, viewsets.GenericViewSet):
         """
         serializer = PerfilSerializer(self.queryset, many=True)
         return Response(serializer.data)
+
+class UserDataViewSet(viewsets.ModelViewSet):
+    """!
+    Clase que gestiona los datos del usuario autenticado
+
+    @author Rodrigo Boet (rboet at cenditel.gob.ve)
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU
+    Public License versión 2 (GPLv2)</a>
+    @date 28-09-2017
+    @version 1.0.0
+    """
+    serializer_class = PerfilSerializer
+    http_method_names = ['get','head']
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        """!
+        Metodo que permite tomar los datos de la consulta
+    
+        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @copyright GNU/GPLv2
+        @date 28-09-2017
+        @param self <b>{object}</b> Objeto que instancia la clase
+        @return Retorna los datos de contexto
+        """
+        return Perfil.objects.filter(user_id=self.request.user.id).all()

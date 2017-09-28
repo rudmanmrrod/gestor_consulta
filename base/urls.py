@@ -18,7 +18,6 @@ from base import views
 
 urlpatterns = [
     url(r'^$', Inicio.as_view(), name = "inicio"),
-    url(r'^403$', Error403.as_view(), name = "base_403"),
 ]
 
 ## Ajax

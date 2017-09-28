@@ -30,7 +30,7 @@ def cargar_tipo_pregunta():
     Función que permite cargar los tipos de preguntas que existen
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @return Devuelve una tupla con los tipos de pregunta
     """
@@ -50,7 +50,7 @@ def cargar_consulta():
     Función que permite cargar las consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 22-02-2017
     @return Devuelve una tupla con las consultas
     """
@@ -70,7 +70,7 @@ def cargar_entidad():
     Función que permite cargar todas las entidades
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @return Devuelve una tupla con las entidades
     """
@@ -91,7 +91,7 @@ def cargar_municipios():
     Función que permite cargar todas los municipios
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @return Devuelve una tupla con los municipios
     """
@@ -112,7 +112,7 @@ def cargar_parroquias():
     Función que permite cargar todas las parroquias
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @return Devuelve una tupla con las parroquias
     """
@@ -133,7 +133,7 @@ def validate_cedula(cedula):
     Función que permite validar la cedula
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @param cedula {str} Recibe el número de cédula
     @return Devuelve verdadero o falso
@@ -150,7 +150,7 @@ def validate_email(email):
     Función que permite validar la cedula
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @param cedula {str} Recibe el número de cédula
     @return Devuelve verdadero o falso
@@ -167,7 +167,7 @@ def validate_username(username):
     Función que permite validar el nombre de usuario
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-09-2017
     @param username {str} Recibe el nombre de usuario
     @return Devuelve verdadero o falso
@@ -184,7 +184,7 @@ def generar_token(id):
     Función que genera un token en base a un id
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 19-06-2017
     @param id {int} Recibe el id para generar el token
     @return Devuelve el token

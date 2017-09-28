@@ -33,7 +33,7 @@ class LoginView(FormView):
     Clase que gestiona la vista principal del logeo de usuario
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 01-03-2017
     @version 1.0.0
     """
@@ -67,7 +67,7 @@ class LogoutView(RedirectView):
     Clase que gestiona la vista principal del deslogeo de usuario
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 01-03-2017
     @version 1.0.0
     """
@@ -93,7 +93,7 @@ class RegisterView(SuccessMessageMixin,FormView):
     Muestra el formulario de registro de usuarios
 
     @author Ing. Leonel P. Hernandez M. (lhernandez at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 09-01-2017
     @version 1.0.0
     """
@@ -137,7 +137,7 @@ class PerfilUpdate(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
     Clase que gestiona la actualización del perfil
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 24-04-2017
     @version 1.0.0
     """

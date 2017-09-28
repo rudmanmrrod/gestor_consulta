@@ -31,7 +31,7 @@ class ConsultaIndex(LoginRequiredMixin, TemplateView):
     Clase que gestiona la vista principal de la consulta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -43,7 +43,7 @@ class ConsultaCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     Clase que gestiona la creación de consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -137,7 +137,7 @@ class ConsultaList(LoginRequiredMixin,ListView):
     Clase que gestiona la lista de consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -174,7 +174,7 @@ class ConsultaDetail(LoginRequiredMixin,DetailView):
     Clase que gestiona el detalle de una consulta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 17-02-2017
     @version 1.0.0
     """
@@ -200,7 +200,7 @@ class ConsultaDelete(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
     Clase que gestiona el borrado de consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -215,7 +215,7 @@ class ConsultaUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     Clase que gestiona la actualización de consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 17-02-2017
     @version 1.0.0
     """
@@ -246,7 +246,7 @@ class ConsultaGenerateToken(LoginRequiredMixin,UpdateView):
     Clase que gestiona la actualización de consultas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 22-06-2017
     @version 1.0.0
     """
@@ -280,7 +280,7 @@ class OpcionesCreate(LoginRequiredMixin,CreateView):
     Clase que gestiona la creación de opciones
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-02-2017
     @version 1.0.0
     """
@@ -343,7 +343,7 @@ class OpcionesUpdate(LoginRequiredMixin,UpdateView):
     Clase que gestiona la actualización de las opciones
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-02-2017
     @version 1.0.0
     """
@@ -380,7 +380,7 @@ class OpcionesDelete(LoginRequiredMixin,DeleteView):
     Clase que gestiona el borrado de una opción
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-02-2017
     @version 1.0.0
     """
@@ -413,7 +413,7 @@ class PreguntaDelete(LoginRequiredMixin,DeleteView):
     Clase que gestiona el borrado de una pregunta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-02-2017
     @version 1.0.0
     """
@@ -452,7 +452,7 @@ class PreguntaCreate(LoginRequiredMixin,CreateView):
     Clase que gestiona la creación de preguntas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 21-02-2017
     @version 1.0.0
     """
@@ -516,7 +516,7 @@ class PreguntaUpdate(LoginRequiredMixin, UpdateView):
     Clase que gestiona la actualización de las preguntas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 23-02-2017
     @version 1.0.0
     """

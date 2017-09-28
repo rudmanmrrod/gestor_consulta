@@ -45,7 +45,6 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     'captcha',
     'rest_framework',
-    'django_filters',
 ]
 
 PROJECT_APPS = [

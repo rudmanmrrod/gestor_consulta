@@ -26,7 +26,7 @@ class CedulaField(MultiValueField):
     Clase que agrupa los campos de la nacionalidad y número de cédula de identidad en un solo campo del formulario
 
     @author Ing. Roldan Vargas (rvargas at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 26-04-2016
     @version 2.0.0
     """

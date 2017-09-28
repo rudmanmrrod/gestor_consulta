@@ -21,7 +21,7 @@ class Entidad(models.Model):
     Clase que gestiona el modelo de las entidades o estados
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 18-04-2017
     @version 1.0.0
     """
@@ -40,7 +40,7 @@ class Municipio(models.Model):
     Clase que gestiona el modelo de los municipios
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 18-04-2017
     @version 1.0.0
     """
@@ -62,7 +62,7 @@ class Parroquia(models.Model):
     Clase que gestiona el modelo de las parriquias
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 18-04-2017
     @version 1.0.0
     """

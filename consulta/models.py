@@ -22,7 +22,7 @@ class Consulta(models.Model):
     Clase que gestiona los datos de la consulta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-06-2017
     @version 1.0.0
     """
@@ -43,7 +43,7 @@ class TipoPregunta(models.Model):
     Clase que gestiona los tipos de preguntas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -56,7 +56,7 @@ class Pregunta(models.Model):
     Clase que gestiona los datos de la pregunta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """
@@ -75,7 +75,7 @@ class Opcion(models.Model):
     Clase que gestiona las opciones de las preguntas
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-02-2017
     @version 1.0.0
     """

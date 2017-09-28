@@ -25,7 +25,7 @@ class Error403(TemplateView):
     Clase para mostrar el error de permisos
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 09-01-2017
     @version 1.0.0
     """
@@ -37,7 +37,7 @@ class Inicio(TemplateView):
     Clase para mostrar el inicio del sistema
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 24-04-2017
     @version 1.0.0
     """
@@ -49,7 +49,7 @@ def actualizar_combo(request):
     Función que actualiza los datos de un select dependiente de los datos de otro select
 
     @author Ing. Roldan Vargas (rvargas at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 28-04-2016
     @param request <b>{object}</b> Objeto que contiene la petición
     @return Devuelve un HttpResponse con el JSON correspondiente a los resultados de la consulta y los respectivos

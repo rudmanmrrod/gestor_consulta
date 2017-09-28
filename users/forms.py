@@ -39,7 +39,7 @@ class LoginForm(forms.Form):
     Clase del formulario de logeo
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 01-03-2017
     @version 1.0.0
     """
@@ -105,7 +105,7 @@ class UserRegisterForm(forms.ModelForm):
     Formulario de Registro
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-04-2017
     @version 1.0.0
     """
@@ -246,7 +246,7 @@ class PerfilForm(forms.ModelForm):
     Formulario del perfil
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 24-04-2017
     @version 1.0.0
     """
@@ -292,7 +292,7 @@ class PasswordResetForm(PasswordResetForm):
     Clase del formulario de resetear contraseña
 
     @author Ing. Leonel P. Hernandez M. (lhernandez at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 02-05-2017
     @version 1.0.0
     """
@@ -320,7 +320,7 @@ class PasswordConfirmForm(SetPasswordForm):
     Formulario para confirmar la constraseña
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 15-05-2017
     @version 1.0.0
     """
@@ -337,7 +337,7 @@ class UserForm(forms.Form):
 
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 19-09-2017
     @version 1.0.0
     """
