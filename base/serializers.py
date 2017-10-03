@@ -21,7 +21,7 @@ class EntidadSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo Entidad
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 16-08-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -37,7 +37,7 @@ class MunicipioSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo Municipio
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 16-08-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -53,7 +53,7 @@ class ParroquiaSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo Parroquia
 
     @author Argenis Osorio (aosorio at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 17-08-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto

@@ -18,6 +18,7 @@ from users.models import Perfil
 from .serializers import PerfilSerializer, RegistroSerializer
 
 from rest_framework import viewsets
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -30,8 +31,7 @@ class FormViewSet(MultipleSerializersViewMixin, viewsets.GenericViewSet):
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU
-    Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-06-2017
     @version 1.0.0
     """
@@ -44,7 +44,7 @@ class FormViewSet(MultipleSerializersViewMixin, viewsets.GenericViewSet):
 
         @author Antonio Araujo (aaraujo at cenditel.gob.ve)
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
-        @copyright GNU/GPLv2
+        @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
         @date 19-09-2017
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna la respuesta con los datos
@@ -60,7 +60,7 @@ class FormViewSet(MultipleSerializersViewMixin, viewsets.GenericViewSet):
         Método que retorna la lista de los perfiles
 
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
-        @copyright GNU/GPLv2
+        @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
         @date 19-09-2017
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna los datos de los perfiles
@@ -73,8 +73,7 @@ class UserDataViewSet(viewsets.ModelViewSet):
     Clase que gestiona los datos del usuario autenticado
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU
-    Public License versión 2 (GPLv2)</a>
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 28-09-2017
     @version 1.0.0
     """
@@ -93,3 +92,17 @@ class UserDataViewSet(viewsets.ModelViewSet):
         @return Retorna los datos de contexto
         """
         return Perfil.objects.filter(user_id=self.request.user.id).all()
+    
+class PerfilViewSet(viewsets.ModelViewSet):
+    """!
+    Clase que gestiona los datos del perfil de los usuarios
+
+    @author Rodrigo Boet (rboet at cenditel.gob.ve)
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
+    @date 28-09-2017
+    @version 1.0.0
+    """
+    queryset = Perfil.objects.all()
+    serializer_class = PerfilSerializer
+    filter_fields = ('cedula','user__username','user__email')
+    http_method_names = ['get','head']

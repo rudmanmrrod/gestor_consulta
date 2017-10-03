@@ -31,7 +31,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo User
 
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 31-08-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -46,7 +46,7 @@ class PerfilSerializer(serializers.ModelSerializer):
     Metodo que permite serializar el modelo Perfil
 
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 31-08-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -63,7 +63,7 @@ class RegistroSerializer(FormSerializer):
 
     @author Antonio Araujo (aaraujo at cenditel.gob.ve)
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 19-09-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -73,7 +73,7 @@ class RegistroSerializer(FormSerializer):
         Metodo que guarda lols registros del formulario
     
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
-        @copyright GNU/GPLv2
+        @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
         @date 20-09-2017
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna verdadero si se guarda

@@ -3,6 +3,7 @@ Pillow==4.1.1
 PyJWT==1.5.2
 argparse==1.4.0
 dateutils==0.6.6
+django-filter==1.0.4
 django-rest-framework-braces==0.2.2
 django-simple-captcha==0.5.5
 djangorestframework==3.6.3

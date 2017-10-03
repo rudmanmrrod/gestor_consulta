@@ -45,6 +45,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     'captcha',
     'rest_framework',
+    'django_filters',
 ]
 
 PROJECT_APPS = [
@@ -158,6 +159,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ## Configuraciones del rest framework
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     #'DEFAULT_PERMISSION_CLASSES': (
     #    'rest_framework.permissions.IsAuthenticated',
     #),

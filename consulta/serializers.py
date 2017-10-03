@@ -20,7 +20,7 @@ class OpcionSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo opcion
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 22-06-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -35,7 +35,7 @@ class TipoPreguntaSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo tipo de pregunta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 22-06-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -50,7 +50,7 @@ class PreguntaSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo pregunta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-06-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
@@ -69,7 +69,7 @@ class ConsultaSerializer(serializers.HyperlinkedModelSerializer):
     Metodo que permite serializar el modelo consulta
 
     @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright GNU/GPLv2
+    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
     @date 20-06-2017
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto

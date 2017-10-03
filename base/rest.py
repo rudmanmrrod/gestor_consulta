@@ -52,7 +52,7 @@ class MunicipioViewSet(viewsets.ModelViewSet):
         Función organizar la consulta
     
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
-        @copyright GNU/GPLv2
+        @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
         @date 20-09-17
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna un la consulta

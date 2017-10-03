@@ -36,7 +36,7 @@ class ConsultaViewSet(viewsets.ModelViewSet):
         Metodo que permite generar la consulta al modelo
     
         @author Rodrigo Boet (rboet at cenditel.gob.ve)
-        @copyright GNU/GPLv2
+        @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
         @date 22-06-2017
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna los datos de contexto
