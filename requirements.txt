@@ -1,4 +1,4 @@
-Django==1.11.2
+Django==1.11.15
 Pillow==4.1.1
 PyJWT==1.5.2
 argparse==1.4.0
