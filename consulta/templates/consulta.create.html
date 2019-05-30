@@ -6,17 +6,36 @@
         {% csrf_token %}
         <div class="center">
             <h1>Crear Consulta</h1><hr>
-            {% for field in form %}
-                {% if field.label != "Token" %}
-                    <div class="input-field {% if field.errors %}invalid{% endif %}">
-                        {{ field }}
-                        <label for="{{ field.auto_id }}">
-                            {{ field.label }}
-                        </label>
-                        {% include 'base.forms.errors.html' with form_errors=field.errors col_title_error='col s2' col_msg_error='col s10' %}
-                    </div>
-                {%endif%}
-             {% endfor %}
+            <div class="input-field {% if form.nombre_consulta.errors %}invalid{% endif %}">
+                {{ form.nombre_consulta }}
+                <label for="{{ form.nombre_consulta.auto_id }}">
+                    {{ form.nombre_consulta.label }}
+                </label>
+                {% include 'base.forms.errors.html' with form_errors=form.nombre_consulta.errors col_title_error='col s2' col_msg_error='col s10' %}
+            </div>
+            <div class="input-field {% if form.activa.errors %}invalid{% endif %}">
+                <p>
+                    <label for="{{ form.activa.auto_id }}">
+                        {{ form.activa }}
+                        <span>{{ form.activa.label }}</span>
+                    </label>
+                </p>
+                {% include 'base.forms.errors.html' with form_errors=form.activa.errors col_title_error='col s2' col_msg_error='col s10' %}
+            </div>
+            <div class="input-field {% if form.texto_pregunta.errors %}invalid{% endif %}">
+                {{ form.texto_pregunta }}
+                <label for="{{ form.texto_pregunta.auto_id }}">
+                    {{ form.texto_pregunta.label }}
+                </label>
+                {% include 'base.forms.errors.html' with form_errors=form.texto_pregunta.errors col_title_error='col s2' col_msg_error='col s10' %}
+            </div>
+            <div class="input-field {% if form.tipo_pregunta.errors %}invalid{% endif %}">
+                {{ form.tipo_pregunta }}
+                <label for="{{ form.tipo_pregunta.auto_id }}">
+                    {{ form.tipo_pregunta.label }}
+                </label>
+                {% include 'base.forms.errors.html' with form_errors=form.tipo_pregunta.errors col_title_error='col s2' col_msg_error='col s10' %}
+            </div>
              <div>
                 <h5 class="deep-orange-text lighten-1">
                     Agregar Más Preguntas
