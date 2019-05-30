@@ -142,7 +142,7 @@ function ver_preguntas(id) {
                 $.each($('.material-dialog').last().find('.modal-content span a'),function(key,value){
                     $(value).attr('onclick','del_pregunta('+preguntas[key]['id']+')');
                 });
-                $('select').material_select();
+                $('select').formSelect();
             }
             else{
                 
@@ -388,7 +388,7 @@ function add_preguntas(id) {
             }
         }
     );
-    $('select').material_select();
+    $('select').formSelect();
 }
 
 /**

@@ -174,8 +174,10 @@ class PerfilUpdate(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
         @param queryset <b>{object}</b> Objeto que contiene una consulta
         @return El objeto del perfil
         """
-        print(self.kwargs['pk'])
-        obj = Perfil.objects.get(user_id=self.kwargs['pk'])
+        try:
+            obj = Perfil.objects.get(user_id=self.kwargs['pk'])
+        except Exception as e:
+            obj = None
         return obj
     
     def get_success_url(self):
@@ -202,10 +204,13 @@ class PerfilUpdate(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
         @return Retorna los valores iniciales
         """
         initial = super(PerfilUpdate, self).get_initial()
-        perfil = Perfil.objects.get(user_id=self.kwargs['pk'])
-        initial['parroquia'] = perfil.parroquia_id
-        initial['municipio'] = perfil.parroquia.municipio_id
-        initial['estado'] = perfil.parroquia.municipio.entidad_id
+        try:
+            perfil = Perfil.objects.get(user_id=self.kwargs['pk'])
+            initial['parroquia'] = perfil.parroquia_id
+            initial['municipio'] = perfil.parroquia.municipio_id
+            initial['estado'] = perfil.parroquia.municipio.entidad_id
+        except Exception as e:
+            pass 
     
         return initial
     
@@ -222,7 +227,8 @@ class PerfilUpdate(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
         """
         parroquia = Parroquia.objects.get(id=form.cleaned_data['parroquia'])
         
-        self.object = form.save()
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
         self.object.cedula = form.cleaned_data['cedula']
         self.object.parroquia = parroquia
         self.object.save()

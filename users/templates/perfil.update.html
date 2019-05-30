@@ -8,15 +8,11 @@
             <h1>Actualizar Perfil</h1><hr>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="input-field {% if form.cedula.errors %}invalid{% endif %}">
-                    <div class="col m4 s4">
-                        <div class="row">
-                            {{ form.cedula }}
-                            <label for="{{ form.cedula.auto_id }}">
-                                {{ form.cedula.label }}
-                            </label>
-                        </div>
-                        {% include 'base.forms.errors.html' with form_errors=form.cedula.errors col_title_error='col s2' col_msg_error='col s10' %}
-                    </div>
+                    {{ form.cedula }}
+                    <label for="{{ form.cedula.auto_id }}">
+                        {{ form.cedula.label }}
+                    </label>
+                    {% include 'base.forms.errors.html' with form_errors=form.cedula.errors col_title_error='col s2' col_msg_error='col s10' %}
                 </div>
             </div><br><br><br>
             

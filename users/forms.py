@@ -179,11 +179,11 @@ class UserRegisterForm(forms.ModelForm):
 
     ## estado
     estado = forms.ChoiceField(widget=forms.Select(attrs={
-        'onchange': "actualizar_combo(this.value,'base','Municipio','entidad','codigo','nombre','id_municipio');$('select').material_select();"}))
+        'onchange': "actualizar_combo(this.value,'base','Municipio','entidad','codigo','nombre','id_municipio');$('select').formSelect();"}))
 
     ## municipio
     municipio = forms.ChoiceField(widget=forms.Select(attrs={'disabled':'disabled',
-        'onchange': "actualizar_combo(this.value,'base','Parroquia','municipio','codigo','nombre','id_parroquia');$('select').material_select();"}))
+        'onchange': "actualizar_combo(this.value,'base','Parroquia','municipio','codigo','nombre','id_parroquia');$('select').formSelect();"}))
 
     ## parroquia
     parroquia = forms.ChoiceField(widget=forms.Select(attrs={'disabled':'disabled'}))
@@ -273,11 +273,11 @@ class PerfilForm(forms.ModelForm):
 
     ## estado
     estado = forms.ChoiceField(widget=forms.Select(attrs={
-        'onchange': "actualizar_combo(this.value,'base','Municipio','entidad','codigo','nombre','id_municipio');$('select').material_select();"}))
+        'onchange': "actualizar_combo(this.value,'base','Municipio','entidad','codigo','nombre','id_municipio');$('select').formSelect();"}))
 
     ## municipio
     municipio = forms.ChoiceField(widget=forms.Select(attrs={
-        'onchange': "actualizar_combo(this.value,'base','Parroquia','municipio','codigo','nombre','id_parroquia');$('select').material_select();"}))
+        'onchange': "actualizar_combo(this.value,'base','Parroquia','municipio','codigo','nombre','id_parroquia');$('select').formSelect();"}))
 
     ## parroquia
     parroquia = forms.ChoiceField(widget=forms.Select())
