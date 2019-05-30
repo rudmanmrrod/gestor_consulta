@@ -12,7 +12,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
-from __future__ import unicode_literals
+
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -36,7 +36,7 @@ class Consulta(models.Model):
     token = models.CharField(max_length=128, unique=True, null=True)
     
     ## Relación con el user
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     
 class TipoPregunta(models.Model):
     """!
@@ -64,10 +64,10 @@ class Pregunta(models.Model):
     texto_pregunta = models.TextField()
     
     ## Relación con el tipo de pregunta
-    tipo_pregunta = models.ForeignKey(TipoPregunta,related_name='tipo_pregunta')
+    tipo_pregunta = models.ForeignKey(TipoPregunta,related_name='tipo_pregunta',on_delete=models.CASCADE)
     
     ## Relación con la consulta
-    consulta = models.ForeignKey(Consulta,related_name='preguntas')
+    consulta = models.ForeignKey(Consulta,related_name='preguntas',on_delete=models.CASCADE)
     
     
 class Opcion(models.Model):
@@ -83,4 +83,4 @@ class Opcion(models.Model):
     texto_opcion = models.TextField()
     
     ## Relación con la pregunta
-    pregunta = models.ForeignKey(Pregunta,related_name='opciones')
+    pregunta = models.ForeignKey(Pregunta,related_name='opciones',on_delete=models.CASCADE)

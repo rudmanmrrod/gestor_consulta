@@ -12,7 +12,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
-from __future__ import unicode_literals
+
 
 from django.db import models
 
@@ -51,7 +51,7 @@ class Municipio(models.Model):
     nombre = models.CharField(max_length=50)
     
     ## Relación con la entidad
-    entidad = models.ForeignKey(Entidad)
+    entidad = models.ForeignKey(Entidad,on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.nombre
@@ -73,7 +73,7 @@ class Parroquia(models.Model):
     nombre = models.CharField(max_length=50)
     
     ## Relación con el municipio
-    municipio = models.ForeignKey(Municipio)
+    municipio = models.ForeignKey(Municipio,on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.nombre

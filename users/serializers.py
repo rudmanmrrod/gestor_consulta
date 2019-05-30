@@ -96,4 +96,4 @@ class RegistroSerializer(FormSerializer):
         return True
     
     class Meta(object):
-            form = UserForm
+        form = UserForm

@@ -12,7 +12,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
-from __future__ import unicode_literals
+
 from django.core import signing
 from django.http import HttpResponseServerError
 from django.contrib.auth.models import User

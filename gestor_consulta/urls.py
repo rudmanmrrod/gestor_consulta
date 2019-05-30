@@ -13,20 +13,20 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
 from rest.routers import router
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('base.urls')),
-    url(r'^consulta/', include('consulta.urls')),
-    url(r'^', include('users.urls')),
-    url(r'^captcha/', include('captcha.urls')),
-    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(router.urls)),
-    url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^api-token-refresh/', refresh_jwt_token),
+    path('admin/', admin.site.urls),
+    path('', include('base.urls')),
+    path('consulta/', include('consulta.urls')),
+    path('', include('users.urls')),
+    path('captcha/', include('captcha.urls')),
+    path('api/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls)),
+    path('api-token-auth/', obtain_jwt_token),
+    path('api-token-refresh/', refresh_jwt_token),
 ]
