@@ -15,7 +15,7 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 import json
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, TemplateView, DeleteView, DetailView, UpdateView

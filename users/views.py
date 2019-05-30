@@ -12,14 +12,14 @@ Copyleft (@) 2017 CENDITEL nodo Mérida - https://planificacion.cenditel.gob.ve/
 # (CENDITEL) nodo Mérida - Venezuela</a>
 # @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
 # @version 1.0
-from django.shortcuts import render, redirect
-from django.views.generic import FormView, RedirectView, CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth import authenticate, logout, login
-from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.models import User, Group
+from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User, Group
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views.generic import FormView, RedirectView, CreateView, UpdateView
 from .forms import LoginForm, UserRegisterForm, PerfilForm
 from .models import Perfil
 from base.models import Parroquia

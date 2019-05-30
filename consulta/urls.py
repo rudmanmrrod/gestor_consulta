@@ -17,7 +17,7 @@ from django.contrib import admin
 from .views import *
 from .ajax import *
 
-pathpatterns = [
+urlpatterns = [
     ## paths de la consulta
     path('', ConsultaIndex.as_view(), name = "consulta_index"),
     path('create', ConsultaCreate.as_view(), name = "consulta_create"),
@@ -42,7 +42,7 @@ pathpatterns = [
 ]
 
 ## paths por ajax
-pathpatterns += [
+urlpatterns += [
     path('ajax/pregunta-list/<int:pk>', pregunta_list, name = "ajax_pregunta_list"),
     path('ajax/opciones-list/<int:pk>', opciones_list, name = "ajax_opciones_list"),
     ## paths especiales sin argumentos

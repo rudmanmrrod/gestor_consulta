@@ -4,7 +4,7 @@
 **/
 function agregar_preguntas(element) {
     $('#agregar_preguntas').append($(element).html());
-    $('select').material_select();
+    $('select').formSelect();
 }
 
 /**
@@ -150,7 +150,7 @@ function ver_preguntas(id) {
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrío un error inesperado", 4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     });
 }
@@ -203,20 +203,20 @@ function submitOption(objecto) {
             url: URL_CREAR_OPCIONES+$(objecto).attr('action'),
             success: function(response) {
                 if (response.code) {
-                    Materialize.toast('Se crearon las opciones con éxito', 4000);
+                    M.toast({html:'Se crearon las opciones con éxito'});
                 }
                 else{
                     var errors = '';
                     $.each(response.errors,function(key,value){
                         errors += key+" "+value+"<br>";
                     });
-                    Materialize.toast(errors, 4000);
+                    M.toast({hmtl:errors});
                 }
             }
         });
     }
     else{
-        Materialize.toast('Debe llenar todas las opciones', 4000);
+        M.toast({html:'Debe llenar todas las opciones'});
     }
 }
 
@@ -272,7 +272,7 @@ function see_option(id) {
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado", 4000);
+            M.toast({hmtl:"Ocurrió un error inesperado"});
         }
     });
 }
@@ -289,14 +289,14 @@ function update_option(id) {
         url: URL_ACTUALIZAR_OPCIONES,
         success: function(response) {
             if (response.code) {
-                Materialize.toast("Se actualizaron las opciones con éxito",4000);
+                M.toast({html:"Se actualizaron las opciones con éxito"});
             }
             else{
                 var errors = '';
                 $.each(response.errors,function(key,value){
                     errors += key+" "+value+"<br>";
                 });
-                Materialize.toast(errors, 4000);
+                M.toast({html:errors});
             }
         }
     }); 
@@ -408,7 +408,7 @@ function validate_question(id) {
         }
     });
     if (vacio) {
-        Materialize.toast("Debe llenar todas las preguntas que agregó", 4000);
+        M.toast({html:"Debe llenar todas las preguntas que agregó"});
     }
     else{
         create_question(id);
@@ -427,19 +427,19 @@ function create_question(id) {
     url: URL_CREAR_PREGUNTAS+id,
     success: function(response) {
         if (response.code) {
-            Materialize.toast("Se crearon/creó la(s) pregunta(s) con éxito", 4000);
+            M.toast({html:"Se crearon/creó la(s) pregunta(s) con éxito"});
         }
         else{
             var errors = '';
             $.each(response.errors,function(key,value){
                 errors += key+" "+value+"<br>";
             });
-            Materialize.toast(errors, 4000);
+            M.toast({html:errors});
         }
     },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado", 4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     });
 }
@@ -463,15 +463,15 @@ function delete_question(id) {
         success: function(response) {
             if (response.success) {
                 $(input).parent().parent().parent().parent().remove();
-                Materialize.toast("Se eliminó la pregunta con éxito", 4000);
+                M.toast({html:"Se eliminó la pregunta con éxito"});
             }
             else {
-                Materialize.toast(response.mensaje, 4000);
+                M.toast({html:response.mensaje});
             }
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado", 4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     }); 
 }
@@ -495,15 +495,15 @@ function delete_option(objeto,id) {
         success: function(response) {
             if (response.success) {
                 $(objeto).parent().parent().remove();
-                Materialize.toast("Se eliminó la opción con éxito", 4000);
+                M.toast({html:"Se eliminó la opción con éxito"});
             }
             else {
-                Materialize.toast(response.mensaje, 4000);
+                M.toast({html:response.mensaje});
             }
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado", 4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     }); 
 }
@@ -518,19 +518,19 @@ function update_question() {
         url: URL_ACTUALIZAR_PREGUNTAS,
         success: function(response) {
             if (response.code) {
-                Materialize.toast("Se actualizaron las preguntas con éxito", 4000);
+                M.toast({html:"Se actualizaron las preguntas con éxito"});
             }
             else{
                 var errors = '';
                 $.each(response.errors,function(key,value){
                     errors += key+" "+value+"<br>";
                 });
-                Materialize.toast(errors, 4000);
+                M.toast({html:errors});
             }
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado",4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     }); 
 }
@@ -640,7 +640,7 @@ function generate_token(id){
         url: URL_GENERAR_TOKEN+id,
         success: function(response) {
             if (response.code) {
-                Materialize.toast("Se actualizó el token con éxito", 4000);
+                M.toast({html:"Se actualizó el token con éxito"});
                 setTimeout(function(){
                     location.reload();    
                 },2000);
@@ -650,12 +650,12 @@ function generate_token(id){
                 $.each(response.errors,function(key,value){
                     errors += key+" "+value+"<br>";
                 });
-                Materialize.toast(errors, 4000);
+                M.toast({html:errors});
             }
         },
         error:function(error)
         {
-            Materialize.toast("Ocurrió un error inesperado",4000);
+            M.toast({html:"Ocurrió un error inesperado"});
         }
     }); 
 }

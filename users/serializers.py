@@ -23,7 +23,6 @@ from base.functions import (
 from base.models import Parroquia
 from .forms import UserForm
 from .models import Perfil
-from drf_braces.serializers.form_serializer import FormSerializer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -51,49 +50,30 @@ class PerfilSerializer(serializers.ModelSerializer):
     @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
     @return Retorna los datos de contexto
     """
-    user = UserSerializer(read_only=True)
+    user = UserSerializer()
 
     class Meta:
         model = Perfil
         fields = ('cedula', 'parroquia', 'user')
 
-class RegistroSerializer(FormSerializer):
-    """!
-    Clase serializador de registro de usuario
-
-    @author Antonio Araujo (aaraujo at cenditel.gob.ve)
-    @author Rodrigo Boet (rboet at cenditel.gob.ve)
-    @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
-    @date 19-09-2017
-    @param serializers.HyperlinkedModelSerializer <b>{object}</b> Objeto del serializer
-    @return Retorna los datos de contexto
-    """
-    def save(self):
+    def create(self, validated_data):
         """!
-        Metodo que guarda lols registros del formulario
+        Metodo que guarda el serializer
     
-        @author Rodrigo Boet (rboet at cenditel.gob.ve)
+        @author Rodrigo Boet (rudmanmrrod at gmail)
         @copyright <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU Public License versión 3 (GPLv3)</a>
-        @date 20-09-2017
+        @date 30-05-2019
         @param self <b>{object}</b> Objeto que instancia la clase
         @return Retorna verdadero si se guarda
         """
-        user = User()
-        user.username = self.validated_data['username']
-        user.first_name = self.validated_data['nombre']
-        user.last_name = self.validated_data['apellido']
-        user.set_password(self.validated_data['password'])
-        user.email = self.validated_data['email']
-        user.save()
-               
-        parroquia = Parroquia.objects.get(id=self.validated_data['parroquia'])
-        
-        perfil = Perfil()
-        perfil.cedula = self.validated_data['cedula']
-        perfil.parroquia = parroquia
-        perfil.user = user
-        perfil.save()
-        return True
-    
-    class Meta(object):
-        form = UserForm
+        user = validated_data.pop("user")
+        with transaction.atomic():
+            user_created = User()
+            user_created.username = user['username']
+            user_created.first_name = user['nombre']
+            user_created.last_name = user['apellido']
+            user_created.email = user['email']
+            user_created.set_password(user['password'])
+            user_created.save()
+            profile = Perfil.objects.create(**validated_data,user=user_created)
+        return profile

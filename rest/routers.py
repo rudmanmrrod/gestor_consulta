@@ -19,7 +19,7 @@ from consulta.rest import ConsultaViewSet
 from base.rest import (
     EntidadViewSet, MunicipioViewSet, ParroquiaViewSet,
     )
-from users.rest import FormViewSet, UserDataViewSet, PerfilViewSet
+from users.rest import UserDataViewSet, PerfilViewSet
 
 router = DefaultRouter()
 # ------------------------------------------
@@ -28,6 +28,5 @@ router.register(r'user', UserDataViewSet, 'user_data')
 router.register(r'entidad', EntidadViewSet, 'entidad')
 router.register(r'municipio', MunicipioViewSet, 'municipio')
 router.register(r'parroquia', ParroquiaViewSet, 'parroquia')
-router.register(r'registro', FormViewSet, 'registro')
 router.register(r'perfil', PerfilViewSet, 'perfil')
 
