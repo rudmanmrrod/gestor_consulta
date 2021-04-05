@@ -2,7 +2,7 @@ Django==2.2.18
 django-filter==2.1.0
 django-ranged-response==0.2.0
 django-simple-captcha==0.5.11
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 Pillow==8.1.1
 PyJWT==1.7.1
